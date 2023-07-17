@@ -1,0 +1,20 @@
+---
+pagetitle: "Promotion Effectiveness"
+params:
+  count: 38
+  n: 200 
+  p: 0.25
+---
+
+```{r}
+count<-params$count
+n<-params$n 
+p<-params$p
+```
+
+Suppose a store manager thinks that $`r 100*p`\%$ of its customers would upgrade to a more expensive item during a promotion. You work there as well and find the store manager\'s claim too high. To find out, you sample $`r n`$ customers and find out $`r count`$ of them would upgrade. Does the evidence support the store manager\'s claim?
+
+**_Solution:_**  
+
+```{r child="../statplosion-problems/solution/HypothesisTestPropLeftTailSolution.Rmd"}
+```

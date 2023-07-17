@@ -1,0 +1,24 @@
+---
+pagetitle: "Average Monthly Demand"
+params:
+  mu: 48 
+  sigma: 14
+  xbar: 40 
+  n: 12 
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+n<-params$n 
+xbar<-params$xbar
+```
+
+Suppose that monthly demand in units for a retail product is given by a normal distribution that has a mean of $`r mu`$ and standard deviation $`r sigma`$. Find the chance that that the average demand for the next 12 months is $`r xbar`$ or fewer units.
+
+
+**_Solution:_**  
+
+```{r child="../statplosion-problems/solution/SamplingMeansLeftTailAreaSolution.Rmd"}
+```
+This is the chance the average demand for the next year is $`r xbar`$ or less.

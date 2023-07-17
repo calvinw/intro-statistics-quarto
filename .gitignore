@@ -47,3 +47,8 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+statplosion-problems
+_book
+
+/.quarto/

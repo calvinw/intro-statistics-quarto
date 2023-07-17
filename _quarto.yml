@@ -1,0 +1,21 @@
+project:
+  type: book
+
+book:
+  title: "intro-statistics"
+  author: "Calvin Williamson"
+  date: "7/16/2023"
+  chapters:
+    - index.Rmd
+    - what-is-statistics.Rmd
+    - descriptive-and-inferential.Rmd
+    - zvalues.Rmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: journal
+  pdf:
+    documentclass: scrreprt

@@ -1,0 +1,22 @@
+---
+pagetitle: "Estimating Out of Stock"
+params:
+  count: 26 
+  n: 208 
+  confidence: 0.90
+---
+
+```{r}
+count<-params$count
+n<-params$n
+confidence<-params$confidence
+```
+
+A store had some item out of stock in $`r count`$ of the past $`r n`$ weeks (the last 4 years). Calculate a $`r 100*confidence`\%$ confidence interval estimate for the proportion of weeks this item is out of stock.
+
+**_Solution:_**  
+
+```{r child="../statplosion-problems/solution/ConfidenceIntervalProportionsSolution.Rmd"}
+```
+
+Our estimate is between $`r leftEndPtPercent` \%$ and $`r rightEndPtPercent` \%$

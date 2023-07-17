@@ -1,0 +1,22 @@
+---
+pagetitle: "Mean Sales for Handbags"
+params:
+  xbar: 255000 
+  n: 100 
+  mu: 265000 
+  s: 57000
+---
+
+```{r}
+mu<-params$mu
+xbar<-params$xbar
+n<-params$n 
+s<-params$s
+```
+
+A brand of handbags are marketed through a large number of department stores nationwide. A manager feels the mean sales for all stores in the past year is less than $\$`r mu`$. Based on a sample of $`r n`$ stores, the brand's sales have a mean of $\$`r xbar`$ and a standard deviation of $\$`r s`$. Test the manager's claim about the mean sales for all stores.  
+
+**_Solution:_**  
+
+```{r child="../statplosion-problems/solution/HypothesisTestMeansLeftTailSolution.Rmd"}
+```

@@ -1,0 +1,201 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+
+# Descriptive and Inferential Statistics {#descriptive-and-inferential}
+
+
+There are two main approaches in statistics, one focuses on presenting a situation and the other is about predicting. You may notice we like to offer ways to remember concepts so here's another one: "d" with "d" and "i" with "i". **D**escriptive statistics deals with **d**escribing data while **i**nferential statistics is used to **i**nfer.
+
+## Descriptive Statistics
+
+Statistics techniques used mainly for **summarizing data** are called **descriptive statistics**.
+
+So, in descriptive statistics the goal is to **describe a situation**. We want accurate information and then let others know about this data. Descriptive statistics involve collecting data, organizing data, summarizing data, and presenting data. There are different ways to present data, including charts and tables. It can also be powerful for a summary to be just a numerical value. For example, April 2020 headlines mention US unemployment claims were about 17 million people in three weeks.
+
+## Inferential Statistics
+
+Statistical techniques used primarily to **draw conclusions about populations** are called **inferential statistics**.
+
+An inference is a decision based on samples drawn from populations. Inferential statistics uses **probability**, which is the chance of an event occurring. For example, the Congressional Budget Office expects the unemployment rate will be 9 percent at the end of 2021[^1]. Can you tell why this is an inference rather than a description? We are currently in 2020 so referring to a year in the future is a good indicator we have inferential information. The words "will be" instead of "are" can also be a tip off we are dealing with an inferential statement. (Note - we will try to use other examples but with a pandemic going on it is difficult.)
+
+## Examples
+
+Let’s take a look at some examples and decide if our statements are descriptive or inferential.
+
+:::{#exm-left-handed-people}
+## Left Handed People
+```{asis, echo=T}
+  About 10% of people are left-handed.
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **descriptive**. It is a summary.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+:::{#exm-instagram}
+## Instagram
+```{asis, echo=T}
+  9 out of 10 students in a certain major use Instagram.
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **descriptive**. It is a summary. Which majors do you think are most likely to use Instagram? Please let us know!
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+:::{#exm-bubble-tea}
+## Bubble Tea
+```{asis, echo=T}
+  Drinking bubble tea can lower cholesterol levels by 1%.
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **inferential**. It is a prediction.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+One of the authors is obsessed with bubble tea and made this statistic up! That's a reason why statistics can be powerful and dangerous. Someone may find my false inferential statement and use it as a fact. We will talk about the misuse of statistics soon but please be on the lookout for sources when you are given any data or statements!
+
+:::{#exm-median-household-income}
+## Median Household Income:
+```{asis, echo=T}
+According to a Census, the US median household income is \$63,179[^2].
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **descriptive**. It is a summary.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+:::{#exm-harvard-class-of-2024}
+## Harvard Class of 2024
+```{asis, echo=T}
+
+  40,246 prospective students applied to the Harvard Class of 2024.
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **descriptive**. It is a summary.
+
+  Did this one trick you because of a future year? It is descriptive because the class of 2024 enters four years prior to this date and applies months earlier than that!
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+
+:::{#exm-new-courses-at-fit}
+## New Courses at FIT
+```{asis, echo=T}
+  In the year 2030, about 45 new courses will be offered at FIT.
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **inferential**. It is a prediction; we cannot know for sure how many courses will be approved in the next couple years. We hope to have a few in our department!
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+Note that we should usually use the word \"about\" because we cannot retrieve information from every single person in the US or even every single person at FIT! We are using samples of our target population to represent the entire group. If you notice there are two cases in the examples above where we do not use "about" and supposedly have the total population. For applications at a university this does seem reasonable to achieve! For the US Census, we truly want the information to represent the entire population.
+
+## More About Inferential Statistics
+
+Let\'s look more at inferential statistics. We take data values (called the **sample**) to make inferences (draw conclusions) about an entire group we\'re interested in (called the **population)**. After we analyze collected sample data, we reach a conclusion.
+
+Here is an example:
+
+:::{#exm-average-height-of-females}
+## Average Height of Females
+```{asis, echo=T}
+  Based on a random sample of 100 females 18 years or older in New York City, we believe that the average height of all females 18 year or older in New York City is 64 inches with a maximum error of 3 inches. We are 90% confident of this.
+
+  Is this descriptive or inferential?
+
+  **_Solution:_**
+
+  This is **inferential**.
+
+  Here we are using the data values from our sample (the 100 New York City females) to estimate the average height of the entire population of females in New York City. We get this estimate by doing a calculation based on the data values from the sample. It should be mentioned that we do not find out the height of every single female 18 or older in NYC!  Rather, we can only estimate the average and talk about how certain we are of our estimate. Again, we draw conclusions about a certain population based on our specific sample.
+
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+
+
+## More Examples
+
+Why don\'t you try to answer the following for extra practice in determining whether descriptive or inferential statistics have been used:
+
+Once you\'re done scroll down for the answers!
+
+:::{#exm-average-life-expectancy}
+## Average Life Expectancy
+```{asis, echo=T}
+  The average life expectancy in (the) Netherlands is 81.6 years.
+
+  Is this descriptive or inferential?
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+:::{#exm-potassium-lowers-blood-pressure}
+## Potassium Lowers Blood Pressure
+```{asis, echo=T}
+  A diet high in potassium will lower blood pressure.
+
+  Is this descriptive or inferential?
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+
+
+:::{#exm-bubble-tea-budget}
+## Bubble Tea Budget
+```{asis, echo=T}
+  The total amount of money a household spent on Bubble Tea in one week was \$35.40. One of the author's statistics and by the entire household, it is just me (my partner and kids do not drink it).
+
+  Is this descriptive or inferential?
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+
+:::{#exm-number-of-high-school-students}
+## Number of High School Students
+```{asis, echo=T}
+  In 2033, the number of high school students will be 3.6 million.
+
+  Is this descriptive or inferential?
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+Here are the solutions:
+
+- Average Life Expectancy - descriptive
+- Potassium Lowers Blood Pressure - inferential
+- Bubble Tea Budget - descriptive
+- Number of High School Students - inferential
+
+[^1]: [[https://www.cbo.gov/publication/56314]{.underline}](https://www.cbo.gov/publication/56314)
+
+[^2]: [[https://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html]{.underline}](https://www.census.gov/library/stories/2019/09/us-median-household-income-not-significantly-different-from-2017.html)

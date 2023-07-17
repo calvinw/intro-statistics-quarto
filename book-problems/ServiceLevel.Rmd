@@ -1,0 +1,20 @@
+---
+pagetitle: "Service Level"
+params:
+  z: 1.82
+---
+
+```{r}
+z<-params$z
+```
+
+Suppose that monthly demand in units for a retail product is given by a normal distribution. Find the service level for service factor of $z=`r z`$.
+
+**_Solution:_**  
+
+The service level can be found by finding the left tail area for the given service factor $z$-value.
+
+```{r child="../statplosion-problems/solution/StdNormalLeftTailSolution.Rmd"}
+```
+     
+This left tail area is the **service level**. A service level of $`r nearestPercent`\%$ means that there is just a $`r 100-nearestPercent`\%$ chance of lost sales in given month.

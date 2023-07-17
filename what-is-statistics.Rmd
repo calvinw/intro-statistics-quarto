@@ -1,0 +1,54 @@
+```{r setup, echo=FALSE}
+#source("intro-statistics-bookdown.R")
+#knit_examples_init()
+```
+
+# What is Statistics? {#what-is-statistics}
+
+In this section we will define what the subject of **statistics** is.
+
+## What is Statistics?
+
+At this point in time everyone reading this knows the importance of
+statistics. As we are typing this text, COVID-19 is at the forefront of
+our everyday lives. Even from home, statistics about this virus is
+inescapable. Television, newspapers, and all over the Internet we see
+statistical information now more than ever. We have always had
+statistics, though. Can you think of some areas where you recall
+statistical information?
+
+Some fields include sports, education, politics, real estate, crime,
+advertisement, economics, and health. One of the authors used to be
+obsessed with the New York Yankees (especially Derek Jeter) and would
+know some player stats just for fun. We notice data and graphs more and
+more since teaching the subject especially when there is a misuse of
+statistics. While we see statistics a lot we need to be careful what is
+true. We will get into this more in a bit! We believe you will also
+notice statistics more after reading this book; please feel free to send
+us charts or graphs that make you go, "WHAT?!".
+
+Let's go ahead and define statistics:
+
+> **Statistics** is a science that involves the **collection, organization, analysis, and interpretation of data**.
+
+A major goal in statistics includes summarizing data and drawing conclusions (based on data). Statistics can involve almost any kind of data. You will notice we like to use personal data because that truly is the easiest to obtain!
+
+Some examples of data that we can all collect pretty easily:
+
+- "television" ^["Television" because at least one of the authors does not have a tv but watches plenty of shows through streaming services.] time in a day
+- heights
+- shoe sizes
+- ages
+- weights
+- average number of times you order in food per week
+- current hair colors
+- books read in a year,
+- hours studying for Statistics per week
+
+Can you think of a couple more off the top of your head?
+
+We can do statistics with any data set that involves numbers! We do have
+to make sure that whatever we choose has variation. This means that all
+the numbers we collect cannot be the same or identical. We can study
+the ages of professors you currently have but we cannot do statistics
+with the age of your statistics professor (if it's just one of us that is)! If you have one statistics professor then you would have the same age written down and only have one entry. We will talk more about this later.

@@ -6,4 +6,6 @@
 ```{r child=solution}
 ```
 
-$$ \tag*{$\blacksquare$} $$
+$$
+\tag*{$\blacksquare$}
+$$

@@ -9,17 +9,18 @@ You can use this calculation to figure out how far away data values are from the
 
 Here is the formula in words:
 
-\begin{equation}
-z =\frac{\text{data} -\text{mean}}{\text{std dev}}
-\end{equation}
+$$
+              z =\frac{\text{data} -\text{mean}}{\text{std dev}}
+$$ {#eq-z-value-in-words}
+
 
 ## Population Z Value
 
 First lets look at the population version of it. Suppose you know the mean $\mu$ and the standard deviation $\sigma$ for some population. You can find the $z$-value for any data value $x$ like this:
 
-\begin{equation}
-z =\frac{x -\mu}{\sigma}
-\end{equation}
+$$
+              z =\frac{x -\mu}{\sigma}
+$$ {#eq-z-value}
 
 Lets see some examples of this in action:
 

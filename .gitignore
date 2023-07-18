@@ -50,5 +50,6 @@ rsconnect/
 
 statplosion-problems
 _book
+.apikey
 
 /.quarto/

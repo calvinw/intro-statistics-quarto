@@ -1,0 +1,28 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+# Standard Normal Table {#standard-normal-table}
+
+This section shows how to use the standard normal table to find left tail areas. We will be finding the areas for examples like [these](#left-tail-areas).  
+
+The standard normal table (z-table) we use is in [Appendix A](#z-table) This table contains *only* **left tail areas** in it, so in this section we concentrate on showing examples of finding **left tail area** using the table. 
+
+If you have a **right tail area** or **area between** that you need to find, you will have to use some tricks to find the area you want by using the table and some left tail area. In [Standard Normal Areas](#standard-normal-areas) we see how to do that.
+
+So here are a few examples of finding **left tail areas** using the table:
+
+:::{#exm-left-tail-area-}
+## Find the z-value for an exam
+```{r}
+knit_example(list(z=-1.25), 'TableLookupQuestion.Rmd', 'TableLookupSolution.Rmd')
+```
+
+```{r example=TRUE, title="Left tail area for $z=1.32$", results='asis'}
+knit_example('statplosion-problems/TableLookup.Rmd', 
+             list(z=1.32))
+```
+
+```{r example=TRUE, title="Left tail area for $z=0.07$", results='asis'}
+knit_example('statplosion-problems/TableLookup.Rmd', 
+             list(z=0.07))
+```

@@ -10,8 +10,8 @@ You can use this calculation to figure out how far away data values are from the
 Here is the formula in words:
 
 $$
-              z =\frac{\text{data} -\text{mean}}{\text{std dev}}
-$$ {#eq-z-value-in-words}
+z =\frac{\text{data} -\text{mean}}{\text{std dev}}
+$$ {#eq-z-value-formula-in-words}
 
 
 ## Population Z Value
@@ -19,8 +19,8 @@ $$ {#eq-z-value-in-words}
 First lets look at the population version of it. Suppose you know the mean $\mu$ and the standard deviation $\sigma$ for some population. You can find the $z$-value for any data value $x$ like this:
 
 $$
-              z =\frac{x -\mu}{\sigma}
-$$ {#eq-z-value}
+z =\frac{x -\mu}{\sigma}
+$$ {#eq-z-value-formula}
 
 Lets see some examples of this in action:
 
@@ -28,7 +28,9 @@ Lets see some examples of this in action:
 :::{#exm-find-the-z-value}
 ## Find the z-value
 ```{r}
-knit_example(list(mu=52, x=54, sigma=8), "ZValueQuestion.Rmd", "ZValueSolution.Rmd")
+knit_example(list(mu=52, x=54, sigma=8), 
+	     "ZValueQuestion.Rmd", 
+	     "ZValueSolution.Rmd")
 ```
 :::
 
@@ -38,7 +40,9 @@ Here is an example where we find the z-value of an exam score of $65$:
 :::{#exm-find-the-z-value-for-an-exam}
 ## Find the z-value for an exam
 ```{r}
-knit_example(list(mu=72, x=65, sigma=8), "ZValueQuestion.Rmd", "ZValueSolution.Rmd")
+knit_example(list(mu=72, x=65, sigma=8), 
+	     "ZValueQuestion.Rmd", 
+	     "ZValueSolution.Rmd")
 ```
 :::
 
@@ -87,7 +91,6 @@ Using z-scores can also allow you to compare different situations that look like
 :::{#exm-who-did-better}
 ## Who Did Better?
 ```{asis echo=TRUE}
-
 Suppose you and your friend take different exams in different classes:
 
 - you get 75 on test 1 with a mean of 71 and standard deviation of 3
@@ -150,9 +153,9 @@ $$ \tag*{$\blacksquare$} $$
 
 This time the equation looks like this:
 
-\begin{equation}
+$$
 z =\frac{x-\bar x}{s}
-\end{equation}
+$$ {#eq-z-value-sample}
 
 where $\bar x$ is the sample mean and $s$ is the sample standard deviation. Use this formula if you have just sample data to work with and do not know the population mean and population standard deviation.
 
@@ -162,9 +165,9 @@ The meaning of it is very similar to the population z-value version above.
 
 If we do some re-arranging of the equation at the beginning of the secxtion, we can get $x$ in terms of $\mu$ and $\sigma$:
 
-\begin{equation}
+$$
 x =\mu + z\sigma
-\end{equation}
+$$ {#eq-x-value-formula}
 
 This is a version of using the $z$-value formula backwards.
 

@@ -10,6 +10,8 @@ book:
     - what-is-statistics.Rmd
     - descriptive-and-inferential.Rmd
     - zvalues.Rmd
+    - standard-normal-curve.Rmd
+    - standard-normal-table.Rmd
     - latex.Rmd
     - references.qmd
 

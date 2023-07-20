@@ -1,0 +1,87 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+
+```
+
+# Straight Line Review {#lines}
+
+In this section we give some examples of straight lines and also look at the interpretation of slope.   
+
+Since we will use straight lines to model data when there is a trend (This is called regression) it is important that we understand what slopes mean and what the equations look like for different lines.  
+
+For slopes:
+
+- a **positive slope** means **_increasing_** or **_uphill trend_**
+- a **negative slope** means **_decreasing_** or **_downhill trend_**
+
+Here are some examples:  
+
+**Example 1** 
+
+```{r, fig.width = 4, fig.height=4.4}
+m <- 2
+b <- 3
+plot(0, type="n", xlab="x", ylab="y", xaxs="i", yaxs="i", xlim=c(0, 12), ylim=c(0, 12))
+abline(b, m)
+```
+  
+The equation is:  
+
+$y = `r m`x + `r b`$
+
+- The slope is: $m = `r m`$
+- intercept is: $b=  `r b`$
+
+**_Interpretation of slope_**
+
+For each additional unit of x, there is an increase of `r m` units of y
+
+**Example 2** 
+
+```{r, fig.width = 4, fig.height=4.4}
+m <- -1 
+b <- 5 
+plot(0, type="n", xlab="x", ylab="y", xaxs="i", yaxs="i", xlim=c(0, 8), ylim=c(0, 8))
+abline(5, -1)
+```
+
+The equation is:  
+
+$y = `r m`x + `r b`$
+
+- The slope is: $m = `r m`$
+- intercept is: $b=  `r b`$
+
+**_Interpretation of slope_**
+
+For each additional unit of x, there is an decrease of `r -m` units of y
+
+**Example 3** 
+
+```{r, fig.width = 4, fig.height=4.4}
+m<-2.1
+b<-0.5
+plot(0, type="n", xlab="advertising expenditures($000s)", ylab="sales($0 000s)", xaxs="i", yaxs="i", xlim=c(0, 8), ylim=c(0, 8))
+abline(0.5, 2.1)
+```
+
+The equation is:  
+
+$y = `r m`x + `r b`$
+
+- The slope is: $m = `r m`$
+- intercept is: $b=  `r b`$
+
+**_Units_**
+
+Suppose $x$ = advertising expenditures (in $000s, so thousands of $)  
+Suppose $y$ = sales (in $0 000s, so in ten thousands of $)
+    
+- So if $x = 1.2$ that stands for $1200   
+- If $y = 5.6$ that stands for $56,000     
+    
+**_Interpretation of slope_**
+
+For each additional unit of x (so each additional $1000 dollars spent on ads), there is an increase of 2.1 units of y (so an increase of $21,000 in sales) 
+

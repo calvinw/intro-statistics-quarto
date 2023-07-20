@@ -1,0 +1,38 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+
+```
+
+# Z Table For Standard Normal Distribution {#z-table}
+
+Here is a version of the z-table that we use. 
+
+This table matches the formula `NORMSDIST` from Excel and Google Sheets. 
+
+```{r eval=FALSE}
+format <- NULL
+if(knitr::is_html_output()) {
+    format<-"pandoc"
+    #format <- "html"
+}else if(knitr::is_latex_output()) {
+    format <- "latex"
+}else {
+    format<-"pandoc"
+} 
+
+knitr::kable(area_neg, format=format, longtable=F, booktabs=T)
+knitr::kable(area_pos, format=format, longtable=F, booktabs=T)
+```
+
+This part is for negative z-values: 
+
+```{r eval=T}
+make_full_ztable("negative")
+```
+
+And this part is for positive z-values: 
+
+```{r eval=T}
+make_full_ztable("positive")
+```

@@ -13,8 +13,3 @@ p<-params$p
 ```
 
 Your company is trying to figure out what percentage of students sell clothes online at a website like Poshmark at some point in their college career. They think that $`r 100*p`\%$ of students do it. You believe it is more than this. You take a sample of $`r n`$ graduating seniors. You find out that $`r count`$ of them have sold clothes online at some point while in college. Does your evidence support the claim of your company?
-
-**_Solution:_**  
-
-```{r child="../statplosion-problems/solution/HypothesisTestPropRightTailSolution.Rmd"}
-```

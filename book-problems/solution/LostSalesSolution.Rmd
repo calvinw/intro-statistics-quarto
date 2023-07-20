@@ -12,11 +12,7 @@ sigma<-params$sigma
 x<-params$x
 ```
 
-Suppose for some product we know the weekly demand is given by a normal distribution with mean of $`r mu`$ and a standard deviation of $`r sigma`$. Suppose your inventory for this week has already arrived and you have $`r x`$ units available to sell. What is the chance you will experience lost sales this week? Lost sales occur when demand exceeds your inventory in some week.
-
-**_Solution:_**  
-
-```{r child="../statplosion-problems/solution/NormalRightTailSolution.Rmd"}
+```{r child="statplosion-problems/solution/NormalRightTailSolution.Rmd"}
 ```
     
 This right tail area is the chance we will have demand above $`r x`$ and so experience lost sales this week.

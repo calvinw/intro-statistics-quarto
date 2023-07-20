@@ -6,7 +6,7 @@ This OER book is intended to help students in introductory statistics courses. T
 
 ### To Instructors {-} 
 
-The techniques used in this book are similar to *Mathplosion* [@mathplosion] but updated to use *Bookdown* [@R-bookdown].
+The techniques used in this book are similar to *Mathplosion* [@mathplosion] but updated to use *Bookdown* [@R-quarto].
 
 Quarto is based on the RMarkdown format, see *The R Markdown and knitr Book* [@xie2015]
 

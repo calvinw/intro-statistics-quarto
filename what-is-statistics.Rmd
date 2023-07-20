@@ -1,6 +1,6 @@
 ```{r setup, echo=FALSE}
-#source("intro-statistics-bookdown.R")
-#knit_examples_init()
+#source("intro-statistics-quarto.R")
+#
 ```
 
 # What is Statistics? {#what-is-statistics}

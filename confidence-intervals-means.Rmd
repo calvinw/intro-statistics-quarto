@@ -1,0 +1,112 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+
+```
+# Confidence Intervals For Means {#confidence-intervals-means}
+
+In this section we look at confidence intervals for a population mean $\mu$. 
+
+This is a technique for estimating the population mean when we do not know it. 
+
+Use this technique when you have a sample mean and and want to use it to estimate what the population mean is. 
+
+This is an example of inferential statistics since we are using information from a sample (the statistic $\bar x$) to infer information about the population (the parameter $\mu$).
+    
+We start by taking a sample and finding a sample mean $\bar x$. Then we add and subtract a margin of error $E$ to the sample mean to make an interval where we hope to find the population mean. We will show how to calculate the margin of error $E$ below. 
+
+## Steps for Finding Confidence Intervals - Means
+
+The steps involved to do this are as follows:
+
+- Take a sample and calculate the sample mean $\bar x$
+- Calculate a margin of error $E$ using the formula below. (This tells us roughly how far off $\mu$ is from $\bar x$)
+- Find the interval by adding and subtracting $E$ to $\bar x$. (This interval tells where we hope to find $\mu$)
+
+```{asis example=TRUE, title="A Confidence Interval and Margin of Error", echo=TRUE}
+
+Suppose we take a sample and collect some data. Then we compute a sample mean: 
+
+$$
+\bar x = 131 
+$$
+
+Then using the formula for a confidence interval suppose we find that 
+
+$$
+E = 22 
+$$
+
+(We will show how to compute this later on. For now just pretend we did it and got $22$.)
+
+Subtract $E$ from $\bar x$ to get the **lower endpoint** of the confidence interval:
+
+$$
+\bar x - E = 131 - 22 = 109 
+$$
+
+Add $E$ to $\bar x$ to get the **upper endpoint** of the confidence interval:
+
+$$
+\bar x + E = 131 + 22 = 153
+$$
+
+So the confidence interval goes from 109 up to 153. Sometimes we write this like this:
+
+$$
+(\bar x - E,\ \bar x + E) = (109,153)
+$$
+
+Roughly what this says is that we believe the population mean is **between 109 and 153**. 
+
+Exactly how confident and in what sense the above is true we will see below.
+```
+
+Next we look at how we come up with $E$, the margin of error.
+
+## Margin of Error E for Confidence Intervals - Means
+
+To find $E$ we have to first decide on a **confidence level.** This is a percentage (something like 90% or 95% or 99%). 
+
+The confidence level describes how confident we are that our confidence intervals will contain the population mean: 
+
+- A confidence level of 95% means that our confidence intervals ($\bar x - E$, $\bar x + E$) will contain the 
+population mean $\mu$ about 95% of the time.
+- A confidence level of 99% means that our confidence intervals ($\bar x - E$, $\bar x + E$) will contain the 
+population mean $\mu$ about 95% of the time.
+- and so on
+
+Another way to put this:
+
+For 95% confidence, this means that if we repeatedly take samples and find a sample mean $\bar x$, we can expect to find the population mean inside our confidence intervals roughly 95% of the time.    
+    
+This notion of confidence level makes sense only in the context of repeatedly taking confidence intervals for a particular situation.  
+    
+Of the different confidence levels, by far **the most commonly used confidence interval is one with confidence level 95%.** 
+    
+Once we decide on the confidence level we want to use, we will use the following formula to calculate the margin of error E:
+
+$$
+E=(t^\star)\frac{s}{\sqrt{n}} 
+$$
+
+The $s$ is the sample standard deviation, the $n$ is the sample size and the $t^\star$ comes from the chosen confidence level. We show where to get it in the next section.
+
+## Critical Value $t^\star$
+
+The formula for E has something called $t^\star$ in it. This is called the **critical value**. It comes directly from the confidence level. Once you know the confidence level you are using you can use the following formula for $t^\star$ that goes with that confidence level $c$. Here is what you should use in a spreadsheet: 
+
+**=TINV(1.0-c, n-1)**
+
+where $c$ is the confidence level as a decimal (so for example 95% would be .95) and $n$ is the sample size. 
+
+## Confidence Interval Calculations - Means 
+
+:::{#exm-a-99-percent-confidence-interval-for-means}
+## A $99\%$ Confidence Interval for Means
+```{r}
+knit_example(list(xbar=12.4,s=5.1, n=38,confidence=0.99),
+	     'statplosion-problems/question/ConfidenceIntervalMeansQuestion.Rmd', 
+	     'statplosion-problems/solution/ConfidenceIntervalMeansSolution.Rmd') 
+```
+:::
+

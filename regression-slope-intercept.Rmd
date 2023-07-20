@@ -1,0 +1,162 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+```
+
+# Regression SLOPE and INTERCEPT {#regression-slope-intercept}
+
+## Data
+
+Here is the data set we will work with:   
+
+```{r}
+year<- c(16,17,18,19) 
+sales <- c(53,56,58,58)
+data_df<-data.frame(year=year, sales=sales) 
+names <- colnames(data_df)
+hux_df<-create_hux_datatable(data_df)
+
+hux_df
+```
+
+The goal here will be to predict the y-value (called $`r names[2]`$) from the x-value(called $`r names[1]`$). We can see already that as the years increase the sales increase as well. So we can roughly guess the trend by just be looking at the data. 
+
+But we can also do more than just guessing by coming up with a formula that will make our predictions for us when we plug in the year. 
+
+In order to do that we have to come up with an equation that will allow us to plug in an x-value ($`r names[1]`$) and get out a y-value ($`r names[2]`$). This is what we mean by prediction.  
+
+In our case we will use a straight line equation, so that is why this process is called _linear regression_, since linear means "using a line".
+
+First lets see a scatterplot of the data:
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+
+maxX<-max(year)
+minX<-min(year)
+maxY<-max(sales)
+minY<-min(sales)
+
+plot(data_df, pch=19, 
+     xlim=c(minX-2,maxX+2), ylim=c(minY-10, maxY+10),
+     col="blue",
+     main="Scatterplot of sales vs year")
+```
+
+So start by copying the data into your spreadsheet in columns A and B:   
+    
+```{r}
+spread<-create_hux_spreadsheet(8,6)
+m <-matrix(c("year",year,"sales",sales), nrow = length(year)+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, m, col="A", row=1) 
+spread
+```
+
+## Finding Slope and Intercept of Regression Line 
+
+Next lets compute the slope and intercept using the functions SLOPE and INTERCEPT in a spreadsheet. Make sure you enter the y cell range in first and then the x cell range when you are using SLOPE and INTERCEPT. And in fact most "regression" formulas for a spreadsheet require y-values range first and x-values range second.
+
+Okay so here is what using the functions SLOPE and INTERCEPT look like. Slope is labeled m and intercept is labeled b:
+
+```{r}
+model <- lm(sales~year)
+m <- unname(model$coefficients[2])
+b <- unname(model$coefficients[1])
+
+
+spread<-set_hux_spreadsheet_val(spread, "m", "D", 2)
+spread<-set_hux_spreadsheet_val(spread, "b", "D", 3)
+spread<-set_hux_spreadsheet_val(spread,  "=SLOPE(B2:B5,A2:A5)", "E", 2)
+spread<-set_hux_spreadsheet_val(spread,  "=INTERCEPT(B2:B5,A2:A5)", "E", 3)
+
+spread
+```
+
+Here are the values for after using the formulas:
+
+```{r}
+spread<-set_hux_spreadsheet_val(spread, "m", "D", 2)
+spread<-set_hux_spreadsheet_val(spread, "b", "D", 3)
+spread<-set_hux_spreadsheet_val(spread,  m, "E", 2)
+spread<-set_hux_spreadsheet_val(spread,  b, "E", 3)
+
+spread
+```
+
+From this we see that the regression equation is given below:  
+     
+```{r}
+m <- unname(model$coefficients[2])
+b <- unname(model$coefficients[1])
+```
+$$ 
+`r names[2]`= `r m`(`r names[1]`) + `r b`
+$$
+
+
+## Making Predictions Using the Regression Equation 
+
+Next we will make some predictions using the equation above. We want to make predictions for the following values:    
+
+```{r}
+predicters <- c(20,21)
+predicters_df<-data.frame(year=predicters, sales=c("?","?")) 
+hux_predicters_df<-create_hux_datatable(predicters_df)
+hux_predicters_df
+```
+
+So first we set up a part of the spreadsheet to hold our predictions. We call this sections "predictions". Then we list the x-values that will make predictions for. Then along side that we fill in a formula for the regression equation. We use the entries for the slope and the intercept that we found above:
+
+```{r}
+n <- length(model$residuals)
+
+spread<-set_hux_spreadsheet_val(spread, "predictions", col="C", row=1)
+spread<-set_hux_spreadsheet_val(spread, predicters[1], col="A", row=6)
+spread<-set_hux_spreadsheet_val(spread, predicters[2], col="A", row=7)
+
+spread<-set_hux_spreadsheet_val(spread, "=$E$2*A6+$E$3" , col="C", row=6)
+spread<-set_hux_spreadsheet_val(spread, "=$E$2*A7+$E$3", col="C", row=7)
+spread
+```
+
+Here you should use absolute references for the slope and intercept since if you create your predictions by dragging you do not want the formula to update out of the cells where the m and b are. 
+
+Finally here are the predictions:
+
+```{r}
+spread<-set_hux_spreadsheet_val(spread, m*predicters[1] + b, col="C", row=6)
+spread<-set_hux_spreadsheet_val(spread, m*predicters[2] + b, col="C", row=7)
+spread
+```
+
+## A Plot of the Predictions 
+
+Below we show the regression line
+
+$$ 
+`r names[2]`= `r m`(`r names[1]`) + `r b`
+$$
+
+and the predictions for $year=20$ and $year=21$
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+plot(data_df, xlim=c(15,23), ylim=c(50, 70), col="blue", pch=19)
+points(x=c(20,21),y=c(60.5,62.2), col="red", pch=19)
+abline(model, col="blue")
+```
+
+The predictions were made by plugging in the x-values into the equation for the line. Here are the details of one of the calculations so you can see what the spreadsheet is doing:
+
+For $`r names[1]`=`r predicters[1]`$:
+
+$$
+`r names[2]`= `r m`(`r predicters[1]`) + `r b` = `r m*predicters[1] + b`
+$$
+
+So that point is at $(`r predicters[1]`,`r m*predicters[1] + b`)$ on the line.
+
+Remember these predictions might not be perfect, but they match the trend that we see from the straight line we came up with. 
+
+The line we are using is called the _regression line_ or the _line of best fit_ or the _line of least squares_. It goes by a few different names, we will usually call it the _regression line_.
+
+The software comes up with it by fitting a line as best it can between the points so that it is not too far away from them and follows the pattern they form. This is where the term _best fit_ comes from as well.
+

@@ -1,0 +1,18 @@
+---
+pagetitle: "Selling Clothes Online"
+params:
+  count: 101 
+  n: 250 
+  p: 0.34
+---
+
+```{r}
+count<-params$count
+n<-params$n 
+p<-params$p
+```
+
+```{r child="statplosion-problems/solution/HypothesisTestPropRightTailSolution.Rmd"}
+```
+
+This evidence supports your claim that it is more than $40\%$.

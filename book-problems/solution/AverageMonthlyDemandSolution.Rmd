@@ -1,0 +1,19 @@
+---
+pagetitle: "Average Monthly Demand"
+params:
+  mu: 48 
+  sigma: 14
+  xbar: 40 
+  n: 12 
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+n<-params$n 
+xbar<-params$xbar
+```
+
+```{r child="statplosion-problems/solution/SamplingMeansLeftTailAreaSolution.Rmd"}
+```
+This is the chance the average demand for the next year is $`r xbar`$ or less.

@@ -1,0 +1,277 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+library("knitr")
+
+```
+
+# Sampling Distribution of Sample Means {#sample-means-distribution}
+
+## Repeated Sampling For Means
+
+Suppose we start with a population distribution that has a certain population mean $\mu$ and standard deviation $\sigma$. 
+
+There is nothing special about this distribution. For example, it does not have to be normal. It could be. But what we are going to do works for any distribution actually. 
+
+We will call this the **original distribution**, and sometimes we refer to it as the $x$-distribution. 
+
+Then imagine we take samples of a certain size $n$ over and over again,
+each time we calculate the sample mean $\bar x$ from our sample.
+
+So we:
+
+- choose a sample and calculate a sample mean $\bar x$
+- choose a sample and calculate another sample mean $\bar x$
+- choose a sample and calculate another sample mean $\bar x$
+- and so on
+
+Usually the sample means are close to the population mean 
+but sometimes they are farther away (though this is less likely the farther away we get from the population mean).
+
+**It turns out...**
+
+If we then plot all these sample means on a histogram, we get
+something that looks like a normal curve!
+
+This is true if the sample size is big enough even if we start with the original distribution not being normal. 
+
+## Start With An Original Distribution ($x$-distribution)
+
+```{r echo=FALSE}
+set.seed(40)
+n<-10
+numsamples<-40*n
+mu<-50
+sigma<-12
+```
+
+Here we start with an original distribution which is normal (call it the $x$-distribution). It has mean $\mu=`r mu`$ and standard deviation of $\sigma = `r sigma`$.   
+
+Lets pick some samples from this distribution and plot them so we can get and idea what this distribution looks like. Here is a plot of `r numsamples` data values from it:
+
+
+```{r echo=FALSE}
+myorigsample<-round(rnorm(numsamples,mean=mu,sd=sigma))
+hist(myorigsample, breaks=seq(0,100,by=2),
+     xlim=c(0,100),
+     ylim=c(0,80),
+      xlab="Each plotted value on this axis is an x - a single data value", 
+      main=bquote("x-"~"distribution"))
+```
+
+We can see that roughly the standard deviation is about $\sigma=`r sigma`$. 
+
+You can also see that most of the data is between $\mu-3(\sigma)$ and $\mu+3(\sigma)$, which is the same as $z=-3$ up to $z=+3$:  
+
+Let\'s see what those values are:
+
+- $\mu-3\sigma=`r mu`-3(`r sigma`)=`r mu-3*sigma`$ 
+- $\mu+3\sigma=`r mu`+3(`r sigma`)=`r mu+3*sigma`$
+
+We know this is true for every normal curve actually. Most of the data is within 3 standard deviations of the mean.
+
+```{r echo=FALSE}
+n<-10
+xbars<-rep(NA,numsamples)
+samples<-NULL
+for(i in 1:numsamples) {
+    mysamp<-round(rnorm(n,mean=mu,sd=sigma))
+    samples<-c(samples,mysamp)
+    xbars[i] <- mean(mysamp)
+}
+m<-matrix(samples,ncol = n, byrow=TRUE)
+```
+
+## Taking Sample Means   
+
+Now we will take samples from this distribution. For each sample we pick `r n` data values from the original distribution and and then compute the sample mean $\bar x$ for that sample.     
+
+```{r echo=FALSE}
+df<-as.data.frame(m)
+df<-df[1:5,]
+df["xbar"] <- xbars[1:5]
+
+colnames(df)<-c("1","2","3","4","5","6","7","8","9","10","x̄")
+row.names(df)<-c("Sample 1",
+                 "Sample 2",
+                 "Sample 3",
+                 "Sample 4", 
+                 "Sample 5")
+kable(df)
+```
+
+Suppose we continue and do this `r numsamples` times...
+
+Let\'s take a look at the sample means in a histogram:
+
+```{r echo=FALSE}
+hist(xbars, breaks=seq(0,100,by=2),
+     xlim=c(0,100),
+     ylim=c(0,80),
+      xlab=bquote("Each plotted value on this axis is an "~bar(x)~" - a sample mean"), 
+      main=bquote(bar(x)~"-distribution"))
+```
+
+This distribution is called the **$\bar x$-distribution**. or the **sampling distribution of sample means**. 
+
+It is a very important distribution in statistics.
+
+## Sampling Distribution of Sample Means ($\bar x$-distribution) 
+
+One important thing we can see is that the **shape of the $\bar x$-distribution is normal**. 
+
+Next how does it compare to the original $x$-distribution?
+
+Let\'s see the graphs of the original $x$-distribution and the $\bar x$-distribution side by side:
+
+```{r, fig.show="hold", out.width="50%"}
+hist(myorigsample, breaks=seq(0,100,by=2),
+     xlim=c(0,100),
+     ylim=c(0,80),
+      xlab="x", 
+      ylab="", 
+      cex.lab=2,cex.axis=1.5,cex.main=2,cex.sub=2,
+      main=bquote("Standard deviation is "~sigma))
+hist(xbars, breaks=seq(0,100,by=2),
+     xlim=c(0,100),
+     ylim=c(0,80),
+      xlab=bquote(bar(x)), 
+      ylab="", 
+      cex.lab=2,cex.axis=1.5,cex.main=2,cex.sub=2,
+      main=bquote("Standard deviation is "~frac(sigma,sqrt(n))))
+```
+
+We can clearly see that the $\bar x$-distribution is not as spread out as the original $x$-distribution. This is because when you take sample means, it averages the data out and when that happens it is more clustered towards the middle. 
+
+In fact this clustering towards the middle is one of the main ideas of the **Central Limit Theorem** below. 
+
+And it turns out that we can tell how \"squished\" the $\bar x$-distribution is...
+
+The squish factor is just given by $\sqrt{n}$: 
+
+$$ 
+\text{standard deviation of the }\bar x\text{-distribution} = \frac{\sigma}{\sqrt{n}}
+$$
+
+where $\sigma$ is the standard deviation of the original $x$-distribution.
+
+So for example if we took an $\bar x$ using:
+
+ - $n=100$ that would mean the \"squish\" factor is $\sqrt{100}=10$, the spread is reduced by factor of $10$
+ - $n=36$ that would mean the \"squish\" factor is $\sqrt{36}=6$, the spread is reduced by factor of $6$
+
+So for the example above that we used the squish factor is:
+
+$$
+\sqrt{n} = \sqrt{10}=`r sqrt(10)`
+$$
+
+So the standard deviation of the $\bar x$-distribution is:  
+
+$$
+\frac{\sigma}{\sqrt{n}} = 
+   \frac{`r sigma`}{\sqrt{10}} =
+   \frac{`r sigma`}{`r sqrt(10)`}= `r sigma/sqrt(10)`
+$$
+
+So the $\bar x$-distribution is more concentrated around the center $\mu$
+
+And finally its important to note that **sampling distributions** are made by repeatedly taking samples then computing a statistic, then collecting that data and graphing it in a histogram.
+
+## Central Limit Theorem - Means 
+
+It turns out that this \"normal curve\" shape turns up all the time for
+sampling distributions under the right conditions, and that fact is
+called the **Central Limit Theorem**.
+
+This is one of the most important results in statistics and basically it
+tells us that **we can use a normal distribution to approximate the 
+sampling distribution** (the $\bar x$-distribution that is).
+
+This will allow us to calculate areas for the $\bar x$-distribution
+by calculating z-values and using a standard normal curve to find areas we want. 
+    
+:::{#thm-central-limit-theorem-means}
+## Central Limit Theorem - Means
+```{asis echo=TRUE}
+Suppose we have a large population with population mean $\mu$ and standard deviation $\sigma$ and consider samples of size $n$ from this population.
+
+If $n>30$ or if the population we start with is approximately normal:
+
+- The $\bar x$ distribution is normal
+- The mean and standard deviation of the $\bar x$ distribution are
+given by these formulas:
+
+$$
+\text{mean} = \mu
+$$
+
+$$
+\text{standard deviation} = \frac{\sigma}{\sqrt{n}}
+$$
+
+```
+:::
+
+Note: 
+
+- if the population we start with is approximately normal the result is true for any sample size (even $n \leq 30$). 
+- if the population we start with is not approximately normal, we must have $n>30$ for the result to be true.
+    
+The first bullet point of this theorem means:
+
+- we can use a standard normal table to calculate areas under the $\bar x$-distribution
+
+The second bullet point of the theorem means:
+
+- the $\bar x$-distribution has $\mu$ as its center, and the standard deviation we can compute with the formula in the theorem.
+
+## How to Calculate $\bar x$-distribution Areas 
+
+So to find areas under the $\bar x$-distribution we will just
+convert them to areas under a standard normal curve like we did before but this time we will use this formula for the z-scores:
+
+$$
+z=\frac{\bar x-\mu}{\frac{\sigma}{\sqrt{n}}}
+$$
+
+So just like before we will find **left tails, right tails** and **areas
+between** but this time using the z-value formula above.
+
+## Examples of Areas For $\bar x$-distribution
+
+Lets see some examples of computing areas for the $\bar x$-distribution.
+
+First lets see how to compute a left tail area:
+
+:::{#exm-left-tail-area-for-xbar-distribution-when-xbar-equals-210}
+## Left tail area for $\bar x$-distribution when $\bar x=210$ $\mu=220$ $\sigma=100$, and $n=10$
+```{r}
+knit_example(list(sigma=100,mu=220, xbar=210,n=10),
+	     'statplosion-problems/question/SamplingMeansLeftTailAreaQuestion.Rmd', 
+	     'statplosion-problems/solution/SamplingMeansLeftTailAreaSolution.Rmd') 
+```
+:::
+
+Now lets see how to compute a right tail area:
+
+:::{#exm-right-tail-area-for-xbar-distribution-when-xbar-equals-80}
+## Right tail area for $\bar x$-distribution when $\bar x=80$ $\mu=90$ $\sigma=50$, and $n=20$
+```{r}
+knit_example(list(sigma=50,mu=90, xbar=80,n=20),
+	     'statplosion-problems/question/SamplingMeansRightTailAreaQuestion.Rmd', 
+	     'statplosion-problems/solution/SamplingMeansRightTailAreaSolution.Rmd') 
+```
+:::
+
+## Applications of Sampling Distribution of Sample Means 
+
+:::{#exm-average-monthly-demand}
+## Average Monthly Demand 
+```{r}
+knit_example(list(sigma=14,mu=48, xbar=40,n=12),
+	     'book-problems/question/AverageMonthlyDemandQuestion.Rmd', 
+	     'book-problems/solution/AverageMonthlyDemandSolution.Rmd') 
+```
+:::
+

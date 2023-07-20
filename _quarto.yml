@@ -23,7 +23,20 @@ book:
     - standard-normal-table.Rmd
     - standard-normal-areas.Rmd
     - backwards-problems.Rmd
-    - latex.Rmd
+    - sample-proportions-distribution.Rmd
+    - confidence-intervals-prop.Rmd
+    - hypothesis-testing-proportions.Rmd
+    - sample-means-distribution.Rmd
+    - confidence-intervals-means.Rmd
+    - hypothesis-testing-means.Rmd
+    - simple-regression.Rmd
+    - regression-slope-intercept.Rmd
+    - simple-regression-significance.Rmd
+    - regression-toolpak.Rmd
+    - rsquared.Rmd
+    - appendix.Rmd
+    - z-table.Rmd
+    - lines.Rmd
     - references.qmd
 
 bibliography: references.bib

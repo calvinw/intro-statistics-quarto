@@ -1,0 +1,18 @@
+---
+pagetitle: "Shopping App Usage"
+params:
+  count: 78 
+  n: 300 
+  confidence: 0.90
+---
+
+```{r}
+count<-params$count
+n<-params$n
+confidence<-params$confidence
+```
+
+```{r child="statplosion-problems/solution/ConfidenceIntervalProportionsSolution.Rmd"}
+```
+    
+The confidence interval does not contain $40\%$ and so probably the store is overestimating what proportion of their customers would use such an app. It appears to be somewhat less than $40\%$.

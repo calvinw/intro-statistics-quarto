@@ -1,0 +1,19 @@
+---
+pagetitle: "Monthly Demand"
+params:
+  mu: 30 
+  sigma: 4 
+  x: 25 
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+x<-params$x
+```
+
+
+```{r child="statplosion-problems/solution/NormalLeftTailSolution.Rmd"}
+```
+    
+This left tail area is the chance the demand will be $`r x`$ or less.

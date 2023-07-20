@@ -1,0 +1,201 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+# Confidence Intervals For Proportions {#confidence-intervals-prop}
+
+In this section we look at a technique for estimating a population proportion $p$ when we do not know it.   
+    
+The technique is called **calculating a confidence interval**. 
+    
+We start by taking a sample and finding a sample proportion $\hat p$. Then we add and subtract a margin of error $E$ to the sample proportion to make an interval where we hope to find the population proportion. We will show how to calculate the margin of error $E$ below. 
+
+We can say using something called the **confidence level** how likely we are to "capture" the population proportion inside our interval if we do this repeatedly.
+
+This is an example of inferential statistics since we are using information from a sample (the statistic $\hat p$) to infer information about the population (the parameter $p$)
+
+## Steps for Finding Confidence Intervals - Proportions
+
+The steps involved to do this are as follows:
+
+- Take a sample and calculate the sample proportion $\hat p$
+- Calculate a margin of error $E$ using the formula below. (This tells us roughly how far off $\hat p$ is from $p$)
+- Find the interval by adding and subtracting $E$ to $\hat p$. (This interval tells where we hope to find $p$)
+
+:::{#exm-a-confidence-interval-and-margin-of-error}
+## A Confidence Interval and Margin of Error
+```{asis echo=TRUE}
+
+Suppose we take a sample and collect some data. Then we compute a sample proportion: 
+
+$$
+\hat p = .41
+$$
+
+Then using the formula for a confidence interval suppose we find that 
+
+$$
+E = .03
+$$
+
+(We will show how to compute this later on. For now just pretend we did it and got $.03$.)
+
+Subtract $E$ from $\hat p$ to get the **lower endpoint** of the confidence interval:
+
+$$
+\hat p - E = .41 - .03 = .38
+$$
+
+Add $E$ to $\hat p$ to get the **upper endpoint** of the confidence interval:
+
+$$
+\hat p + E = .41 + .03 = .44
+$$
+
+So the confidence interval goes from .38 up to .44. Sometimes we write this like this:
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (.38,.44)
+$$
+
+Roughly what this says is that we believe the population proportion is **between 38% and 44%**. 
+
+Exactly how confident and in what sense the above is true we will see below.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+Next we look at how we come up with $E$, the margin of error.
+
+## Margin of Error E for Confidence Intervals - Proportions
+
+To find $E$ we have to first decide on a **confidence level.** This is a percentage (something like 90% or 95% or 99%). 
+
+The confidence level describes how confident we are that our confidence intervals will contain the population proportion: 
+
+- A confidence level of 95% means that our confidence intervals ($\widehat{p} - E$, $\widehat{p} + E$) will contain the 
+population proportion $p$ about 95% of the time.
+- A confidence level of 99% means that our confidence intervals ($\widehat{p} - E$, $\widehat{p} + E$) will contain the 
+population proportion $p$ about 99% of the time.
+- and so on
+
+Another way to put this:
+
+For 95% confidence, this means that if we repeatedly take samples and find a sample proportion $\hat p$, we can expect to find the population proportion inside our confidence intervals roughly 95% of the time.    
+    
+This notion of confidence level makes sense only in the context of repeatedly taking confidence intervals for a particular situation.  
+    
+Of the different confidence levels, by far **the most commonly used confidence interval is one with confidence level 95%.** 
+    
+Once we decide on the confidence level we want to use, we will use the following formula to calculate the margin of error $E$:
+
+$$
+E=(z^\star)\sqrt{\frac{(1-\hat p)(\hat p)}{n}}
+$$
+
+The $\hat p$ we have and the sample size $n$ we have as well. The $z^\star$ comes from the chosen confidence level. We show where to get it in the next section.
+
+## Critical Value $z^\star$
+
+The formula for E has something called $z^\star$ in it. This is called the **critical value**. It comes directly from the confidence level. Once you know the confidence interval you are using you can look up the $z^\star$ that goes with that confidence level. Here are the most typical values:
+
+| Confidence Level | 80%   | 90%   | 95%   | 99%   | 99.9% |
+|------------------|-------|-------|-------|-------|-------|
+| $z^\star$         | 1.282 | 1.645 | 1.960 | 2.576 | 3.291 |
+
+As an example, this table says:
+
+- use 1.645 for the $z^\star$ if you are computing a 90% confidence interval 
+- use 1.960 for the $z^\star$ if you are computing a 95% confidence interval
+
+If you ever need a confidence interval for some confidence level not shown in the table above you can compute it yourself using a spreadsheet as follows:
+
+**= NORMSINV( (c+1.0)/2)**
+
+where c = confidence level as a proportion. For example if the confidence level was 97% (which is not on the table above) then you could get it in a spreadsheet with
+
+**=NORMSINV((.97+1.0)/2)**
+
+As part of using the normal distribution to find the $z^\star$ we also have to check the technical conditions like in the Central Limit Theorem.   
+
+For the above to be valid must have $n(\hat p)>5$ and $n(1-\hat p)>5$.
+
+
+## Confidence Interval Calculations - Proportions 
+
+:::{#exm-a-95-percent-confidence-interval}
+## A $95\%$ Confidence Interval
+```{r}
+knit_example(list(count=210,n=250,confidence=0.95),
+	     "statplosion-problems/question/ConfidenceIntervalProportionsQuestion.Rmd",
+	     "statplosion-problems/solution/ConfidenceIntervalProportionsSolution.Rmd")
+```
+:::
+
+## Effect of Changing Confidence Level
+
+What is the effect of changing the confidence level? 
+
+The higher the confidence level, the more sure we are of "capturing" the actual population proportion. But at the same time, the more sure we are of "capturing" the actual population proportion the wider our confidence intervals become.
+
+- A 95% confidence interval will be wider than a 90% confidence interval.
+- A 99% confidence interval will be wider than a 95% confidence interval.
+- and so on
+
+It is kind of like if we cast a larger net we will be sure to catch it in the net somewhere, but then we are less sure exactly where it is because the net is bigger.
+
+Let's see an example where we calculate the confidence interval twice, each time using a different confidence level.
+
+- First we compute it for 90% confidence level
+- Second we compute it for 99% confidence level 
+
+:::{#exm-first-version-90-percent-confidence-level}
+## First Version - 90% Confidence Level
+```{r results='asis'}
+knit_example(list(count=50,n=125,confidence=0.90),
+	     "statplosion-problems/question/ConfidenceIntervalProportionsQuestion.Rmd",
+	     "statplosion-problems/solution/ConfidenceIntervalProportionsSolution.Rmd")
+```
+:::
+
+
+Now let's do that last one over with a 99% confidence level. 
+
+:::{#exm-second-version-99-percent-confidence-level}
+## Second Version - $99\%$ Confidence Level
+```{r}
+knit_example(list(count=50,n=125,confidence=0.99),
+	     "statplosion-problems/question/ConfidenceIntervalProportionsQuestion.Rmd",
+	     "statplosion-problems/solution/ConfidenceIntervalProportionsSolution.Rmd")
+```
+:::
+
+
+Which confidence interval was wider in the above?  
+    
+The 99% confidence level one.  
+
+To be more confident that your confidence interval contains the population proportion it must be wider. 
+
+Of course this means your estimate is less accurate and that is reflected in the range of the interval being larger.
+
+## Applications of Confidence Intervals 
+
+:::{#exm-shopping-app-usage}
+## Shopping App Usage
+```{r}
+knit_example(list(count=78,n=300,confidence=0.90),
+	     "book-problems/question/ShoppingAppUsageQuestion.Rmd",
+	     "book-problems/solution/ShoppingAppUsageSolution.Rmd")
+```
+:::
+
+In the next example we estimate the chance of being out of stock for some item we are selling. 
+
+:::{#exm-estimating-out-of-stock}
+## Estimating Out Of Stock 
+```{r}
+knit_example(list(count=26,n=208,confidence=0.90),
+	     "book-problems/question/EstimatingOutOfStockQuestion.Rmd",
+	     "book-problems/solution/EstimatingOutOfStockSolution.Rmd")
+```
+:::

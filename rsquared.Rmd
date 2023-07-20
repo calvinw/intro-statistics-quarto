@@ -1,0 +1,109 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+
+library("statplosion")
+```
+
+```{r}
+num <- 50
+x <- sample(num, num, TRUE)
+e <- rnorm(num)
+```
+
+```{r}
+given_rsquared <- function(x, e, num, m, b, Rsquared, title="blah"){
+	yhat <- b + m*x
+	ssr <- sum( (yhat-mean(yhat))^2 )
+	e <- resid( lm( e ~ x ) )
+	e <- e* sqrt((1.0-Rsquared)/Rsquared*ssr/(sum(e^2)))
+	y <- yhat + e
+	mydata <- data.frame(y=y, x=x)
+	fit <- lm(y ~ x, data=mydata )
+	plot(x,y, pch=19, main=title, cex.main=2)
+	fit
+}
+```
+
+# R-Squared ($r^2$) {#rsquared}
+
+## How Good is the Fit
+
+You might have wondered what $r^2$ tells you in the regression analyses output. It tells you about how tight the fit is for your scatter. 
+
+- If **$r^2 \approx 1.0$**, then all the points will be on a line and their will be **no scatter**.
+- If **$r^2 \approx 0.0$**, then you cannot detect where the line would even be. It is **all scatter**. 
+
+The scatter affects the predictability and accuracy of your model. If you are using the regression equation to make predictions, you should be mindful if the $r^2$ is low, and whether or not that will be an issue for your situation. 
+
+The question of whether the $r^2$ is too low depends on the context and the situation. Sometimes it is unacceptable to have a low $r^2$ but sometimes it is fine. 
+
+You will have to look at your situation to decide whether your model provides benefit even if it is not very accurate when it has a low $r^2$.
+
+## $r^2$ Examples 
+
+Here are some pictures that show different $r^2$ values:
+
+```{r, fig.show="hold", out.width="50%"}
+fit<-given_rsquared(x, e, num, 2,1,1.0, bquote(bold(r^2==1.0)))
+fit<-given_rsquared(x, e, num, 2,1,0.99,bquote(bold(r^2==.99)))
+```
+
+Gradually more and more scatter.
+
+```{r, fig.show="hold", out.width="50%"}
+fit<-given_rsquared(x, e, num, 2,1,0.95,bquote(bold(r^2==.95)))
+fit<-given_rsquared(x, e, num, 2,1,0.90,bquote(bold(r^2==.90)))
+```
+
+And more and more... 
+
+```{r, fig.show="hold", out.width="50%"}
+fit<-given_rsquared(x, e, num, 2,1,0.80,bquote(bold(r^2==.80)))
+fit<-given_rsquared(x, e, num, 2,1,0.70,bquote(bold(r^2==.70)))
+```
+
+```{r, fig.show="hold", out.width="50%"}
+fit<-given_rsquared(x, e, num, 2,1,0.80,bquote(bold(r^2==.60)))
+fit<-given_rsquared(x, e, num, 2,1,0.70,bquote(bold(r^2==.50)))
+```
+
+When $r^2$ is close to $0$, it is very difficult to see any trend:
+
+```{r, fig.show="hold", out.width="50%"}
+fit<-given_rsquared(x, e, num, 2,1,0.25,bquote(bold(r^2==.25)))
+fit<-given_rsquared(x, e, num, 2,1,0.10,bquote(bold(r^2==.10)))
+```
+
+## Explained Variation 
+
+$r^2$ is sometimes called the **explained variation**.
+
+This comes from this interpretation:
+
+ - It is the **percent of the variation in y that is explained by using x** (and a linear model)   
+
+The idea is that some of the variation in y can be understood by using a linear regression model, but not all of it. The **explained variation** is just the notion of how good that linear regression model is.
+
+So if you see this:
+
+- **90% of the variation in y is explained by x** you will know that it just means $r^2=.90$
+- **45% of the variation in y is explained by x** you will know that it just means $r^2=.45$
+
+We won't use this wording much in this book, but it comes up when people talk about and interpret regression results. 
+
+
+```{r, eval=F}
+given_rsquared_random <- function(num, m, b, Rsquared){
+	x1 <- sample(num, num, TRUE)
+	yhat <- b + m*x1
+	ssr <- sum( (yhat-mean(yhat))^2 )
+	e <- rnorm(num)
+	e <- resid( lm( e ~ x1 ) )
+	e <- e* sqrt((1.0-Rsquared)/Rsquared*ssr/(sum(e^2)))
+	y <- yhat + e
+	mydata <- data.frame(y=y, x1=x1)
+	fit <- lm(y ~ x1, data=mydata )
+	summary(fit)
+	plot(x1,y, pch=19)
+}
+```

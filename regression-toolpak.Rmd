@@ -1,0 +1,210 @@
+```{r setup, echo=FALSE, include=F}
+source("intro-statistics-quarto.R")
+
+library("statplosion")
+```
+
+# Using the ToolPak for Regression Modeling {#regression-toolpak}
+
+## The Data 
+
+Lets run a regression analysis using the data analysis **ToolPak**. This add-in is called the
+[_Excel Analysis ToolPak_](https://support.microsoft.com/en-us/office/load-the-analysis-toolpak-in-excel-6a63e598-cd6d-42e3-9317-6b40ba1a66b4) in Excel. For Google Sheets it is called the [_XLMiner Analysis ToolPak_](https://workspace.google.com/marketplace/app/xlminer_analysis_toolpak/600284989882). They both work the same way and produce similar output. The links show how to install these tools. 
+
+Here is the data we will work with for our analysis:
+
+```{r data, echo=FALSE}
+x<-c(16,17,18,19,20)
+y<-c(45,56,58,58,75)
+data_df<-data.frame(x=x,y=y)
+names <- colnames(data_df)
+hux_df<-create_hux_datatable(data_df)
+hux_df
+```
+
+Here is a scatterplot of this data:
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+plot(data_df, pch=19, 
+     xlim=c(15,22), ylim=c(40, 80),
+     main="y vs x")
+```
+
+Make sure this data is entered into a spreadsheet in columns A and B of the spreadsheet. Include the names "x" and "y" in the first row as well. These are the sometimes called the **labels** for the variables.
+
+```{r spreadsheet, echo=FALSE}
+spread<-create_hux_spreadsheet(10,6)
+mtrx <-matrix(c("x",x,"y",y), nrow = length(x)+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, mtrx, col="A", row=1) 
+spread
+```
+
+## ToolPak Output 
+
+Run the Tookpak add-in and select the linear regression tool. For "Input Y Range" enter in **B1:B6** and **A1:A6** for "Input X Range".
+
+You can click on the "Labels" option since you have included row 1 and this contains the labels "x" and "y" for your data.
+
+Now choose D2 as the output cell. This is where your regression summary will go. Go ahead and run the analysis and it should output something like this:
+
+
+```{r analysis, echo=FALSE}
+model<-lm(y~x)
+sum<-summary(model)
+places <- 4 
+
+B<-model$coefficients[1]
+M<-model$coefficients[2]
+df1 <- sum$fstatistic["numdf"]
+df2 <- sum$fstatistic["dendf"]
+FStat <- sum$fstatistic["value"]
+PValue <- pf(FStat,df1,df2,lower.tail=FALSE)
+
+spread<-create_hux_spreadsheet(20,10)
+submatrix <-matrix(c("x",x,"y",y), nrow = length(x)+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, submatrix, col="A", row=1) 
+spread<-toolpak_output(spread, model, row=2, col="D", places=places)
+spread
+```
+
+Lets look at some of these numbers and what they mean. We will use only some of them.
+
+## Interpreting the output of the ToolPak analysis
+
+- **Multiple R** is **`r round(sqrt(sum$r.squared),places)`** in E5. 
+    - This is the absolute value of the correlation coefficient, $R$.
+- **R Squared** is **`r round(sum$r.squared,places)`** in E6
+    - This is the square of the correlation coefficient and usually denoted by $R^2$. 
+      This number tells you how scattered the data is. 1.0 means no scatter, and 0.0 means all scatter
+- **Adjusted R Squared** is **`r round(sum$adj.r.squared,places)`** in E7
+    - This is used for model evaluations in multiple regression. Multiple regression is when you have more than one column of x-variables. Its not useful for simple regression (with one x-variable).
+- **Standard Error of Estimate** is **`r round(sum$sigma,places)`** in E8 
+    - This is a error estimate for how far off your predictions might be. It is a typical error you might make when using this model for making predictions.
+- **Observations** is **`r length(sum$residuals)`** in E9 
+    - This is how many rows of data you have. Its called the **sample size** sometimes as well. 
+
+We will not use all the output from the summary, but we definitely will need two important parts:
+
+- The equation of the regression line (the slope and the intercept)
+- The p-value that tells us if the model is significant
+
+The regression equation $y=mx+b$ is easy to identify from the __Coefficients__: 
+
+- The **Intercept** is **`r B`**
+    - This is the $b$ in the equation above
+- The **slope** is **`r M`** 
+    - This is the $m$ in the equation above
+
+Notice that the slope is next to the name of the x-variable, which in this case is just "x".
+
+So the regression equation for this situation is this:
+
+$$
+y = `r M`x + `r B` 
+$$
+
+But before we start using this equation we need to see if a linear model is valid. This is what we described in the last section about the _signficance_ of the linear model.
+
+Ultimately this tells us if we should use this equation for predictions or not.
+
+We can determine this by examining the p-value that goes with the overall significance of the linear model. 
+
+Locating this is explained in the next section.
+
+## p-value for Overall Significance of the Linear Model  
+
+If you examine the output of the regression analysis you will see this in the middle of the output some cells that look like this:
+
+| F  | Significance F  |
+|---|---|
+| `r round(FStat,places)` | `r round(PValue,places)`  |  
+
+The thing we want is labeled "Signficance F" in this output. Almost everyone else calls this the "p-value" or the "p-value for the significance of the linear model". Here it is: `r round(PValue,places)`.
+
+This p-value (if it is small enough) will tell us if there is a significant linear relationship between the y and the x. This notion of a significant linear model was discussed in the last section where we gave a graphical example that used a very small amount of data.
+
+Here is the official test based on the above p-value and how we use it.
+
+##  Test of Overall Significance of the Linear Model
+
+- If $p < .05$, then there is a **significant linear relationship** between the y and x
+    - Means it is **OK to use the regression equation (if your accuracy allows)**  
+- If $p \geq .05$, then there is **not a significant linear relationship** between the y and x 
+    - Means it is **NOT OK to use the regression equation** 
+
+Since $p = `r round(PValue,places)`$ and this is less than $.05$, we conclude there is a significant linear relationship between y and the x. So it makes sense to use the regression equation for predictions.
+
+Now that we know the linear model is significant, lets use the equation to predict y if $x=6$:
+
+That would be: 
+
+$$
+y = 6.2x - 53.2= (6.2)(6)-53.2 = `r 6.2*6 - 53.2`
+$$
+
+Now if the p-value had not been small enough (less than $.05$) you would **not** use the equation for predictions this way. Remember this test is for the validity of using a linear model (a straight line) to model your data. If the linear model is not significant, then you have no business using the equation for predictions. 
+
+Keep this in mind, you always need to examine this p-value to make sure you are working with an appropriate model.
+
+
+## Example Where The Linear Model is Not Significant 
+
+Let's look at the example from a previous chapter where there was just 3 data points.
+
+```{r echo=FALSE}
+temp<-c(73,75,77)
+gallons<-c(110,97,105)
+data_df<-data.frame(temp=temp,gallons=gallons)
+names <- colnames(data_df)
+hux_df<-create_hux_datatable(data_df)
+hux_df
+```
+
+Here is a scatterplot of this data:
+
+```{r fig.height=4, fig.width=5, fig.align="center"}
+plot(data_df, pch=19, 
+     xlim=c(70,80), ylim=c(80, 120),
+     main="Gallons vs Temperature")
+```
+
+Make sure this data is entered into a spreadsheet in columns A and B of the spreadsheet. Include the names "temp" and "gallons" in the first row as well.
+
+```{r echo=FALSE}
+spread<-create_hux_spreadsheet(10,6)
+mtrx <-matrix(c("temp",temp,"gallons",gallons), nrow = length(temp)+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, mtrx, col="A", row=1) 
+spread
+```
+
+Run the Tookpak add-in and select the linear regression tool. For "Input Y Range" enter in **B1:B4** and **A1:A4** for "Input X Range".
+
+You can click on the "Labels" option since you have included row 1 and this contains the labels "temp" and "gallons" for your data.
+
+Now choose D2 as the output cell. This is where your regression summary will go. Go ahead and run the analysis and it should output something like this:
+
+```{r echo=FALSE}
+model<-lm(gallons~temp)
+sum<-summary(model)
+places <- 4 
+
+B<-model$coefficients[1]
+M<-model$coefficients[2]
+df1 <- sum$fstatistic["numdf"]
+df2 <- sum$fstatistic["dendf"]
+FStat <- sum$fstatistic["value"]
+PValue <- pf(FStat,df1,df2,lower.tail=FALSE)
+
+spread<-create_hux_spreadsheet(20,10)
+submatrix <-matrix(c("temp",temp,"gallons",gallons), nrow = length(temp)+1, byrow=F)
+spread <- paste_hux_subspreadsheet(spread, submatrix, col="A", row=1) 
+spread<-toolpak_output(spread, model, row=2, col="D", places=places)
+spread
+```
+
+In this case the p-value for the significance of the model is given in **I13** and the value is $`r PValue`$. Since this is bigger then $.05$, the is not a significant linear relationship between $temp$ and $gallons$. 
+
+So this means we should NOT use the regression equation here to make predictions. 
+
+We have already seen that in fact the regression equation doesn\'t make sense once we include more of the data. The slope of the relationship here should be positive since as $temp$ goes up it is likely that $gallons$ would go up as well since this is gallons sold. 
+

@@ -9,7 +9,34 @@ book:
     - index.Rmd
     - what-is-statistics.Rmd
     - descriptive-and-inferential.Rmd
+    - population-and-sample.Rmd
+    - parameter-and-statistic.Rmd
+    - variables.Rmd
+    - types-of-variables.Rmd
+    - validity-and-reliability.Rmd
+    - dotplots-and-distributions.Rmd
+    - barplots.Rmd
+    - central-tendencies.Rmd
+    - measures-of-spread.Rmd
     - zvalues.Rmd
+    - standard-normal-curve.Rmd
+    - standard-normal-table.Rmd
+    - standard-normal-areas.Rmd
+    - backwards-problems.Rmd
+    - sample-proportions-distribution.Rmd
+    - confidence-intervals-prop.Rmd
+    - hypothesis-testing-proportions.Rmd
+    - sample-means-distribution.Rmd
+    - confidence-intervals-means.Rmd
+    - hypothesis-testing-means.Rmd
+    - simple-regression.Rmd
+    - regression-slope-intercept.Rmd
+    - simple-regression-significance.Rmd
+    - regression-toolpak.Rmd
+    - rsquared.Rmd
+    - appendix.Rmd
+    - z-table.Rmd
+    - lines.Rmd
     - latex.Rmd
     - references.qmd
 
@@ -18,15 +45,5 @@ bibliography: references.bib
 format:
   html:
     theme: journal
-    html-math-method: mathjax
-    include-in-header:
-      - text: |
-          <script>
-          window.MathJax = {
-            tex: {
-              tags: 'ams'
-            }
-          };
-          </script>
   pdf:
     documentclass: scrreprt

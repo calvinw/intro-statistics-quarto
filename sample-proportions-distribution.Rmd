@@ -1,0 +1,171 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+
+# Sampling Distribution of Sample Proportions {#sample-proportions-distribution}
+
+## Repeated Sampling For Proportions
+
+Suppose we start with a population that has a certain population proportion $p$.
+
+Then imagine we take samples of a certain size $n$ over and over again,
+each time we calculate the sample proportion $\hat p$.
+
+So we:
+
+- choose a sample and calculate a sample proportion $\hat p$
+- choose a sample and calculate another sample proportion $\hat p$
+- choose a sample and calculate another sample proportion $\hat p$
+- and so on
+
+Usually the sample proportions are close to the population proportion $p$ but sometimes they are farther away (though this is less likely the farther away we get from the population proportion).
+
+**It turns out...**
+
+If we then plot all these sample proportions on a histogram, we get
+something that looks like a normal curve!
+
+## Coke vs Pepsi Example
+
+Lets show this with a made up example.
+
+```{r echo=FALSE}
+set.seed(2)
+n <- 100 
+p <- .65
+numsamples <- 300 
+counts <- rbinom(numsamples,n,p)
+phats<-counts/n
+```
+
+Suppose the population proportion of students that prefer coke to pepsi is $p=`r p`$. 
+
+This means for the whole student population:
+
+- `r 100*p`\% prefer coke
+- `r 100*(1-p)`\% prefer pepsi 
+
+(We don't allow choosing neither as an answer here...its binary)
+
+Suppose we take samples of size $n=`r n`$ students with the following results:
+
+- The first sample has $\hat p = `r phats[1]`$ prefer coke
+- The second sample has $\hat p = `r phats[2]`$ prefer coke
+- The third sample  has $\hat p = `r phats[3]`$  prefer coke
+- and so on
+
+Here are the sample proportions that we get for the first 50 samples:
+
+```{r echo=FALSE, warning=FALSE}
+m<-matrix(phats,ncol = 10, byrow=TRUE)
+kable(m[1:5,])
+```
+
+Suppose we continue and do this `r numsamples` times...
+
+Finally let's plot all of these sample proportions together in a histogram:
+
+```{r echo=FALSE}
+hist(phats, breaks=20, 
+     xlab="Sample Proportions", 
+     ylab="Number", 
+     main="Distribution of Sample Proportions That Prefer Coke")
+```
+
+We can see that the **shape of the distribution is normal**
+
+## Sampling Distribution of Sample Proportions  
+
+This distribution of the sample proportions is called the **sampling
+distribution of sample proportions** or the **$\hat p$-distribution**.
+
+**Sampling distributions** are made by repeatedly taking samples then
+computing a statistic, then collecting that data and graphing it in a histogram.
+
+## Central Limit Theorem - Proportions 
+
+It turns out that this "normal curve" shape turns up all the time for
+sampling distributions under the right conditions, and that fact is
+called the **Central Limit Theorem**.
+
+This is one of the most important results in statistics and basically it
+tells us that **we can use a normal distribution to approximate the 
+sampling distribution** (the $\hat p$-distribution that is).
+
+This will allow us to calculate areas for the $\widehat{p}$ distribution
+by calculating z-values and using a standard normal curve to find areas we want. 
+    
+:::{#thm-central-limit-theorem}
+## Central Limit Theorem-Proportions
+```{asis echo=TRUE}
+When we use a large population with a population proportion of $p$
+and consider samples of size n from this population
+
+- The $\hat p$ distribution is approximately normal, becoming more and more accurate as n is larger  
+- The mean and standard deviation of the $\hat p$ distribution are
+given by these formulas:
+
+$$
+\text{mean} = p
+$$
+
+$$
+\text{standard deviation} = \sqrt{\frac{p(1-p)}{n}}
+$$
+
+- For the above to be valid must have $n(p)>5$ and $n(1-p)>5$.
+
+```
+:::
+    
+The first bullet point of this theorem says:
+
+- we can use a standard normal table to calculate areas under the $\widehat{p}$-distribution
+
+The second bullet point says:
+
+- the $\widehat{p}$-distribution has $p$ as the center of it, and the standard deviation we can compute with the formula in the theorem.
+
+The third bullet point says:
+
+- You have to compute $n(p)$ and $n(1-p)$ and make sure they are at least $5$. Otherwise you cannot use this approach.
+
+## How to Calculate $\hat p$-distribution Areas 
+
+So to find areas under the $\widehat{p}$ distribution we will just
+convert them to areas under a standard normal curve like we did before but this time we will use this formula for the z-scores:
+
+$$
+z=\frac{\hat p-p}{\sqrt{\frac{(1-p)(p)}{n}}}
+$$
+
+So just like before we will find **left tails, right tails** and **areas
+between** but this time using the z-value formula above.
+
+## Examples of Areas For $\hat p$-distribution
+
+Lets see some examples of computing areas for the $\hat p$-distribution.
+
+First lets see how to compute a left tail area:
+
+:::{#exm-left-tail-area-for-p-hat-distribution}
+## Left Tail Area for $\hat p$-distribution
+```{r}
+knit_example(list(count=190,n=250,p=0.79),
+	     'statplosion-problems/question/SamplingProportionsLeftTailAreaQuestion.Rmd', 
+	     'statplosion-problems/solution/SamplingProportionsLeftTailAreaSolution.Rmd') 
+```
+:::
+
+Now lets see how to compute a right tail area:
+
+
+:::{#exm-right-tail-area-for-p-hat-distribution}
+## Right Tail Area for $\hat p$-distribution
+```{r}
+knit_example(list(count=208,n=320,p=0.61),
+	     'statplosion-problems/question/SamplingProportionsRightTailAreaQuestion.Rmd', 
+	     'statplosion-problems/solution/SamplingProportionsRightTailAreaSolution.Rmd') 
+```
+:::
+

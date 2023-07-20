@@ -1,0 +1,43 @@
+
+Example:
+```{r example=TRUE, title="Left tail area for $z=-1.25$", results='asis'}
+knit_example('statplosion-problems/TableLookup.Rmd', 
+             list(z=-1.25))
+```
+
+Answer:
+:::{#exm-Left-tail-area-for-$z=1.25$}
+## Left tail area for $z=-1.25$ 
+```{r}
+knit_example(list(z=-1.25), 'TableLookupQuestion.Rmd', 'TableLookupSolution.Rmd')
+```
+:::
+
+Example:
+```{r example=TRUE, title="Left tail area for $z=1.32$", results='asis'}
+knit_example('statplosion-problems/TableLookup.Rmd', 
+             list(z=1.32))
+```
+
+Answer:
+:::{#exm-Left-tail-area-for-$z=1.32$}
+## Left tail area for $z=1.32$ 
+```{r}
+knit_example(list(z=1.32), 'TableLookupQuestion.Rmd', 'TableLookupSolution.Rmd')
+```
+:::
+
+
+Example:
+```{r example=TRUE, title="Left tail area for $z=0.07$", results='asis'}
+knit_example('statplosion-problems/TableLookup.Rmd', 
+             list(z=0.07))
+```
+
+Answer:
+:::{#exm-Left-tail-area-for-$z=0.07$}
+## Left tail area for $z=0.07$ 
+```{r}
+knit_example(list(z=0.07), 'TableLookupQuestion.Rmd', 'TableLookupSolution.Rmd')
+```
+:::

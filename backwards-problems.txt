@@ -1,0 +1,113 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-bookdown.R")
+knit_examples_init()
+```
+# Backwards Problems {#backwards-problems}
+
+In this section we want to go in the opposite direction from previous chapters. That is we want to find an **_x-value that will give us a certain left tail or right tail area_**. These are called **backwards** problems since they start with the area and then find the x-value. This is backwards from what we have done before.
+
+So in previous chapters we had this:
+
+_**Find Area From an X-value**_
+
+1. Start with an x-value 
+1. Compute its z-value
+1. Find the area using the z table (or use NORMSDIST)
+
+Now we want to go in the other direction:  
+
+_**Find X-value From an Area**_
+
+1. Start with an area 
+1. Find the z-value that gives that area
+1. Compute the x-value from the z-value 
+
+Before we do these full backwards problems from area to x-value, first lets solve an easier problem that involves finding the z-value that goes with a particular area.  
+
+Then once we can do that, we will see how to find the x-value from the z-value for backwards problems.  
+    
+Okay so we are given an area (left or right tail) and we want to find the z-value.
+
+## Find Z Value for Given Left Tail Area 
+
+```{r example=TRUE, title="z-value for left tail of $25\\%$", results='asis'}
+knit_example('statplosion-problems/BackwardsStdNormalLeft.Rmd',
+             list(area=0.25))
+```
+
+## Find Z Value for Given Right Tail Area 
+
+```{r example=TRUE, title="z-value for right tail of $18\\%$", results='asis'}
+knit_example('statplosion-problems/BackwardsStdNormalRight.Rmd',
+             list(area=0.18))
+```
+
+## Solve Backwards for X-value 
+
+Once you have the z-value that you need using one of the above you can solve backward for the x-value that you need. It works like this:
+
+_**Find X-value by Solving Z-score Formula Backwards**_
+
+1. Find the z-value you need using technique above 
+1. Plug the z-value into the z-score formula
+1. Plug in $\mu$ and $\sigma$ (these are known)
+1. Solve for the x-value
+
+So basically you just plug your z-value, $\mu$ and $\sigma$ into this and solve for x: 
+
+\begin{equation}
+z =\frac{x-\mu}{\sigma} `r label("backwardszvalue")`
+\end{equation}
+
+Here is an example where we want to find the **lower 25%** of the data. That means we want to find the x-value that has a left tail area of 25%.
+    
+```{r example=TRUE, title="Find $x$ for bottom $25\\%$ of data", results='asis'}
+knit_example('statplosion-problems/SolveBackwardsLeftTail.Rmd',
+             list(area=0.25, mu=18, sigma=3))
+```
+    
+Here is an example where we want to find the **upper 15%** of the data. That means we want to find the x-value that has a right tail area of 15%. 
+    
+```{r example=TRUE, title="Find $x$ for top $15\\%$ of data", results='asis'}
+knit_example('statplosion-problems/SolveBackwardsRightTail.Rmd',
+             list(area=0.15, mu=23, sigma=4))
+```
+
+## Applications of Backwards Problems 
+
+Here is an example where you want to find out when a demand value would be in the bottom 10% of your demand expectations for an item. 
+
+```{r example=TRUE, title="Bottom $10\\%$ of Demand Values", results='asis'}
+knit_example('book-problems/BottomPercentDemand.Rmd',
+             list(area=0.10, mu=257, sigma=45))
+```
+
+Here is another application of backwards problems:
+
+The **_service level_** in retail corresponds to the chance that a retailer would experience a lost sale (out of stock situation) for some period of interest.
+
+- A service level of 90% means that lost sales would happen 10% of the time.   
+- A service level of 95% means that lost sales would happen be 5% of the time. 
+- A service level of 99% means that lost sales would happen be 1% of the time. 
+
+Different items and categories can have different service levels as well, with some items being "high" service level items while others being "low" service level items.
+
+The next example shows how to set inventory levels for an item to achieve a certain service level.
+
+```{r example=TRUE, title="Inventory For $95\\%$ service level", results='asis'}
+knit_example('book-problems/InventoryLevel.Rmd',
+             list(area=0.95, mu=340, sigma=80))
+```
+
+In this interpretation service level corresponds to a certain left tail area for the normal distribution:  
+
+- A service level of 90% means you want a left tail area of 90%  
+- A service level of 95% means you want a left tail area of 95%. 
+- A service level of 99% means you want a left tail area of 99%. 
+
+Or you can say it this way as well:
+
+- A service level of 90% means you have lost sales 10% of the time.  
+- A service level of 95% means you have lost sales 5% of the time.  
+- A service level of 99% means you have lost sales 1% of the time.  
+

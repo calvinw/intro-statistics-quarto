@@ -12,6 +12,7 @@ book:
     - zvalues.Rmd
     - standard-normal-curve.Rmd
     - standard-normal-table.Rmd
+    - backwards-problems.Rmd
     - latex.Rmd
     - references.qmd
 

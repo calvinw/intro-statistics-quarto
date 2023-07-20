@@ -29,8 +29,8 @@ Lets see some examples of this in action:
 ## Find the z-value
 ```{r}
 knit_example(list(mu=52, x=54, sigma=8), 
-	     "ZValueQuestion.Rmd", 
-	     "ZValueSolution.Rmd")
+	     "statplosion-problems/question/ZValueQuestion.Rmd", 
+	     "statplosion-problems/solution/ZValueSolution.Rmd")
 ```
 :::
 
@@ -41,8 +41,8 @@ Here is an example where we find the z-value of an exam score of $65$:
 ## Find the z-value for an exam
 ```{r}
 knit_example(list(mu=72, x=65, sigma=8), 
-	     "ZValueQuestion.Rmd", 
-	     "ZValueSolution.Rmd")
+	     "statplosion-problems/question/ZValueQuestion.Rmd", 
+	     "statplosion-problems/solution/ZValueSolution.Rmd")
 ```
 :::
 

@@ -1,0 +1,177 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+
+# Types of Variables {#types-of-variables}
+
+## Quantitative Variables
+
+You can see from the above that **some variables have values that are
+numbers** from a numeric scale or measurement.
+
+Height is an example of one of these. As you go from student to student in the class the height is given by a different measurement for each student.
+
+> Variables whose **values are given by numbers** that come from a numeric scale are called **quantitative**.
+
+:::{#exm-quantitative-variables}
+## Quantitative Variables
+```{asis example=TRUE, title="Quantitative Variables", echo=TRUE}
+
+- Height
+- Amount a customer spends in a store
+- Percentage markup on an item for sale
+- A customer's age
+- Sales for an item in december
+
+These are all values that measure something or come from a numeric scale.
+so they are **quantitative** variables.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+But be careful, if a number is just a way to **categorize** or **label** something it is **not a quantitative variable**.
+
+Quantitative variables have to come from some numeric scale or measurement. And so they are comparable. If you have two different values (like heights) you can say that the bigger value means something. For height it means that person is taller.
+
+So let\'s see some examples of numbers used to just label something:
+
+:::{#exm-these-are-not-quantitative-variables}
+## These Are Not Quantitative Variables
+```{asis example=TRUE, title="These Are Not Quantitative Variables", echo=TRUE}
+
+- Raffle ticket numbers
+- Zip codes
+- SKUs (stock keeping unit - in retail an item for sale)
+
+Raffle ticket numbers do not measure anything, they just identify the ticket. So they would not be quantitative.
+
+Zip codes look like they are quantitative but they are not. They just identify an area of the postal system.
+
+SKUs are often just numbers that label an item for sale in a retail situation.
+
+These are **not quantitative variables**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+Well if the examples above are not quantiative, what are they? Let\'s see next.
+
+## Categorical Variables
+
+Then there are **some variables that have choices** or **categories**. Like **Hair color**. The value comes from some set of choices:
+
+- black
+- brown
+- purple
+- blonde
+- white
+...
+
+As you go from student to student the value of this variable has to be one of these choices and is not described by a number from a scale.
+
+> **Variables that are given by a set of choices** are called **categorical**
+
+:::{#exm-categorical-variables}
+## Categorical Variables
+```{asis example=TRUE, title="Categorical Variables", echo=TRUE}
+
+- Politcal affiliation (conservative, liberal, moderate)
+- Year in college (first-year, sophmore, junior, senior)
+- Type of store(online store vs brick-and-mortar)
+- Was an item marked down (Yes or No)
+
+These are all choices so they are **categorical variables**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+## Binary Variables
+
+Some categorical variables are given by just two choices like **true** or
+**false**.
+
+**Whether a student has black hair** is a variable with the value true or false.
+
+As you go from student to student the value of this variable has to be one of those two choices.
+
+> **Variables that have just two choices** like true/false or yes/no are
+called **binary** variables.
+
+Note that **binary variables are categorical variables**, its just that there are only 2 choices.
+
+In the example above **type of store** was binary and so is **was item marked down**. These both had just 2 choices.
+
+## Other Terms
+
+Sometimes people call data described by categorical variables **qualitative data**.
+
+They call data described by quantitative variables **quantitative data**.
+There are even other terms like nominal, ordinal for qualitative variables and disrete and continuous for quantitative variables. But we will not get into all of those.
+
+## Quantitative or Categorical?
+
+Let's look more on these ideas and do an example together. We want to determine if variables for students in this class are quantitative or categorical. If categorical, also mention if it is binary.
+
+:::{#exm-type-of-variable}
+## Type of Variable
+```{asis example=TRUE, title="Type of Variable", echo=TRUE}
+
+-   Height of students?
+-   Time spent sleeping last night?
+-   Whether or not the student went to sleep before midnight?
+-   Birth month?
+-   Numerical score on a midterm exam?
+-   Whether or not a student scores at least 85 on the midterm exam?
+-   Distance from where a student calls home?
+-   Whether or not a student has a TV?
+-   How many email messages a student has sent in the last 24 hours?
+-   Whether a student has received at least one email message in the last 24 hours?
+-   The number of letters in a student's first name?
+-   How many people live in a student's household?
+
+Just ask yourself for each variable whether it involves a number measurement or a choice (yes/no, true/false, conservative/moderate/liberal).
+
+If it involves a number measurement then it is quantitative, and if it is a choice it is categorical.
+
+If it is categorical and there are only two choices, then it is called binary as well.
+
+-   Height is **quantitative**.
+-   Time spent sleeping last night is **quantitative**.
+-   Whether or not the student went to sleep before midnight is **categorical and binary.**
+-   Month of birth is **categorical.**
+-   Numerical score on a midterm exam is **quantitative**.
+-   Whether or not a student scores at least 85 on the midterm exam is **categorical and binary.**
+-   Distance from home is **quantitative**.
+-   Whether or not the person has a TV is **categorical and binary.**
+-   How many email messages sent in the last 24 hours is **quantitative**.
+-   Whether a student has received at least one email message in the last 24 hours is **categorical and binary.**
+-   The number of letters in a student's first name is **quantitative**.
+-   How many people live in a student's household is **quantitative**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+So variables will be the things that we will study in statistics. And
+oftentimes we will want to study more than just one variable of a group
+or observational unit as well.
+
+:::{#exm-identifying-variables}
+## Identifying Variables
+```{asis echo=TRUE}
+A study found that students who did their schoolwork near natural light
+scored as much as 20 percent higher on exams than other students in the
+same school. What are variables of interest to us? Are the variables
+categorical or quantitative data?
+
+Variables of interest:
+
+- Whether or not a student did their schoolwork near natural light
+- Score on exams
+
+Whether or not the student did their schoolwork near natural light is
+**categorical** since the choices are yes/no. (It is also binary.)
+
+Scores on the exam are **quantitative.**
+```
+$$ \tag*{$\blacksquare$} $$
+:::

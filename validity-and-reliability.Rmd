@@ -1,0 +1,131 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("plotrix")
+```
+
+# Validity and Reliability {#validity-and-reliability}
+
+When can we believe and trust the results of a study?
+
+When can we know if when we repeat a study we get the same results?
+
+These ideas are about **validity** and **reliability**.
+
+## Validity {#validity}
+
+We need to know what went on during the research process in order to accept the results, whether they are stated in words or shown in graphs. Even if the study has validity, people (especially those in the media) might distort results from data with misleading charts and graphs. (One of us just spent over an hour looking at some pretty awful charts. Oops.) Anyway, let’s talk about validity.
+
+We will focus on two types of validity when deciding whether or not we can trust the results from a study:  **internal validity** and **external validity**.
+
+### External Validity {#external-validity}
+
+> The ability to get a true representation of the population from a sample is to achieve **external validity**.
+
+**External validity** is the certainty that the observations in our methods and presence in no way jeopardize our ability to use the random sample as a true representative of the population. We need to make sure we did not influence the results in any way- by the way we collected data or by our presence. We also need to make sure that what we did in a specific place can be generalized to the entire population we wish to study. This means that if we are doing a test in a free clinic, can we generalize to all patients? If we asked students on the 8th Floor in the C building, can we generalize to all FIT students?
+
+### Internal Validity {#internal-validity}
+
+> **Internal validity** is the certainty that the observations in our sample are accurate measures of the characteristics we set out to measure.
+
+We need to make sure that from our sample we obtained HONEST, ACCURATE, and RELIABLE information for **internal validity**. Imagine we are doing a study about the ages of a certain group. We should be able to get the actual ages. Believe it or not, people many lie about their age. Or, someone may actually forget how old they are (it happens)!
+
+In order to make sure we have internal validity we could ask to see driver's licenses or passports.
+
+### Examples of Validity
+
+For the following two examples, answers are given below.
+
+
+:::{#exm-creating-potions}
+## Creating Potions
+```{asis example=TRUE, title="Creating Potions", echo=TRUE}
+Professor Snape wanted to know his students' ability to create potions. So he went over to each student and measured their efforts. Some students may have become nervous and their ability to produce potions could have been influenced by Snape's presence. (I mean... did you see Neville’s face?!) So, his study may not reflect the actual potion-making ability of the students, because of the violation of ___________ validity.
+```
+:::
+
+:::{#exm-gamma-radiation-of-cosmic-tesseract}
+##  Gamma Radiation of Cosmic Tesseract
+```{asis example=TRUE, title="Gamma Radiation of Cosmic Tesseract", echo=TRUE}
+Dr. Banner and Mr. Stark were studying a cosmic tesseract and its levels of gamma radiation. They decided to gather information of the concentration of gamma radiation in all cosmic cubes and precisely weigh each from their sample. If they were given a faulty scale, then there is a violation of  ___________ validity.
+```
+:::
+
+#### Answers {-}
+
+**Creating Potions**
+
+- Answer: External
+- Reason:  Professor Snape failed to make sure he did not influence the results in any way by his presence.  (External validity: We need to make sure we did not influence the results in any way- by the way we collected data or by our presence. )
+
+**Gamma Radiation of Cosmic Tesseract**
+
+- Answer: Internal
+- Reason: If the scale was faulty then our sample of precise weight did not contain HONEST, ACCURATE and RELIABLE information.
+
+## Reliability {#reliability}
+
+We want studies to not just be valid but also reliable.
+
+Reliability is different from validity! A measurement may be valid but not reliable, or reliable but not valid.
+
+> Reliability is another term for consistency.
+
+For reliability if the study was done a second time you would get the same results.
+
+Note that this is different from accuracy. Reliability just means it is consitent. It says nothing about accuracy.
+
+Imagine if we had a colleague bring in a scale to our department at FIT in 2021. A certain mathematics professor decides to change this scale to show the weight but five pounds lighter! If anyone weighs themselves a couple times in one hour, the weight it shows will be reliable since it is the same every time the individual steps on it.  It will not be accurate, since it is not reading the actual weight (but five pounds lighter than the true weight).
+
+We also want to give an example of a bullseye because that is the most common way to visualize these terms. Seriously… if you google these terms and search images most are going to show bullseyes.
+
+Where do you expect points to be on a bullseye if we have both reliability and validity?
+
+Can you think of what points on a bullseye may look like when the shots are reliable but they would not be valid (so miss the target)?
+
+```{r, fig.show="hold", out.width="50%"}
+# first plot
+plot(1:5,seq(1,11,length=5),type="n", bty="n", yaxt="n", xaxt="n", xlab="",ylab="",main="Reliable And Valid", cex.main=2)
+draw.circle(3,6,c(1,0.66,0.33),border="pink", col=c("#00ccff","#ff77ff","#ffccff"),lty=1,lwd=1)
+
+draw.circle(3,6,0.05, col="black")
+draw.circle(3.1,6.1,0.05, col="black")
+draw.circle(3,6.2,0.05, col="black")
+draw.circle(2.9,6,0.05, col="black")
+draw.circle(3,6.25,0.05, col="black")
+
+# second plot
+plot(1:5,seq(1,11,length=5),type="n", bty="n", yaxt="n", xaxt="n", xlab="",ylab="",main="Reliable But Not Valid", cex.main=2)
+draw.circle(3,6,c(1,0.66,0.33),border="pink", col=c("#00ccff","#ff77ff","#ffccff"),lty=1,lwd=1)
+
+draw.circle(5,6,0.05, col="black")
+draw.circle(5.1,6.1,0.05, col="black")
+draw.circle(5,6.2,0.05, col="black")
+draw.circle(4.9,6,0.05, col="black")
+draw.circle(5,6.25,0.05, col="black")
+```
+
+What about not reliable but valid?
+
+And not reliable and not valid?
+
+```{r, fig.show="hold", out.width="50%"}
+#first plot
+plot(1:5,seq(1,11,length=5),type="n", bty="n", yaxt="n", xaxt="n", xlab="",ylab="",main="Not Reliable But Valid", cex.main=2)
+draw.circle(3,6,c(1,0.66,0.33),border="pink", col=c("#00ccff","#ff77ff","#ffccff"),lty=1,lwd=1)
+
+draw.circle(2.9,7,0.05, col="black")
+draw.circle(2.8,5,0.05, col="black")
+draw.circle(3.2,6.8,0.05, col="black")
+draw.circle(3.3,6,0.05, col="black")
+draw.circle(3.2,5.2,0.05, col="black")
+
+#second plot
+plot(1:5,seq(1,11,length=5),type="n", bty="n", yaxt="n", xaxt="n", xlab="",ylab="",main="Not Reliable And Not Valid", cex.main=2)
+draw.circle(3,6,c(1,0.66,0.33),border="pink", col=c("#00ccff","#ff77ff","#ffccff"),lty=1,lwd=1)
+
+draw.circle(4,10,0.05, col="black")
+draw.circle(1.1,2.1,0.05, col="black")
+draw.circle(5,1.2,0.05, col="black")
+draw.circle(6,7,0.05, col="black")
+draw.circle(2,3.25,0.05, col="black")
+```

@@ -1,0 +1,178 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+options(scipen=999)
+```
+# Central Tendencies {#central-tendencies}
+
+There are three main types of measures of the central tendency of a set of data values:
+
+- Mean
+- Median
+- Mode
+
+We will talk about each of these. We want to understand what they represent and when you use them.
+
+## Mean
+
+The mean is what we also call the **average**. This is probably the most familiar measurement of central tendency you know. You already use this all the time.
+
+For the record we will give a notation and a name:
+
+$$
+\bar x = \frac{\sum x}{n}
+$$
+
+The number on the left is called \“x bar\” and is the sample average or mean. On the right, the sigma sign (Greek letter)  stands for summation and the  on the right means \“sum all the data values\” where the x stands for each data value in the sum. After you add all the data values up you divide by n which is the sample size.
+
+```{asis example=T, title="Mean of a Sample", echo=TRUE}
+Suppose we have the following sample data:
+
+$$
+10,6,5,14,6,12
+$$
+
+Then we can find the mean of this sample as follows:
+
+$$
+\bar x = \frac{\sum x}{n} = \frac{10+6+5+14+6+12}{n} = 8.83
+$$
+```
+
+## Median
+
+The median of a sample is just the value that is in the \"middle\" of the data when you line them up in order from smallest to largest.
+
+If you have an odd number of data values you just pick the \"middle\" value:
+
+```{asis example=T, title="Median, Sample Size Odd", echo=TRUE}
+Suppose we have the following sample data:
+
+$$
+2,5,3,1,7
+$$
+
+To find the median of the sample you have to rearrange the data values so they are in order first:
+
+$$
+1,2,3,5,7
+$$
+
+Now the median is just the “middle” value:
+$$
+median = 3
+$$
+```
+
+What happens if you have an even number of data values, so that there isn’t one number in the middle?
+
+In that case you average together the \"two middle values\":
+
+```{asis example=T, title="Median, Sample Size Even", echo=TRUE}
+Suppose you have the data values:
+
+$$
+2,5,3,7
+$$
+
+To find the median of the sample you have to rearrange the data values so they are in order first:
+
+$$
+1,2,3,7
+$$
+
+Now the median is just the average of the two \“middle\” values:
+
+$$
+median = \frac{2+3}{2}=3.5
+$$
+```
+
+So the median of a sample is the value right in the middle.
+
+An important property of the median is that it \"splits\" the data right in the middle:
+
+> The **median** has \"half the data above it\" and \"half the data below it\"
+
+Remember the mean is not guaranteed to be \"in the middle\" but the median is.
+
+## Mode
+
+Finally the mode of a sample is just the value that occurs most frequently.
+
+```{asis example=T, title="Mode of a Sample", echo=TRUE}
+Consider the following list of data values:
+$$
+12,3,8,7,6,3,15,13,9,5
+$$
+
+Then the most frequently occurring value is 3. It occurs twice and all the other values only occur once.
+
+$$
+mode = 3
+$$
+```
+
+## Some Examples
+
+```{asis example=T, title="Salaries of a Company", echo=TRUE}
+Consider the following list of salaries from a company:
+
+\$36,500
+\$36,950
+\$37,800
+\$39,750
+\$40,000
+\$258,000
+
+Hmmm…There are 5 salaries all about the same and one really high.
+
+Probably here the last one is the CEO’s salary.
+
+When you say that the salaries at the company are \"pretty low\", the CEO does a calculation and computes the mean salary:
+
+$$
+\bar x = \frac{\sum x}{n} = \$74,833.33
+$$
+
+He says the **average salary is $\$74,833$ **.
+
+Not too bad by his account!!
+
+But wait, that doesn’t seem to tell the whole story. If you find the median of the salaries here you get the following:
+
+$$
+median = \frac{37800+39750}{2} = \$38775
+$$
+
+The **median salary is $\$38,775$**
+
+That is very different from the mean:
+
+$\$74,833$ vs $\$38,775$
+
+Wow!
+
+Now surely in this case the median is more representative of the \“average\” salary at the company.
+
+Just look at the numbers!
+
+In this case the median does seem to be better at describing the situation.
+```
+
+## Mean vs Median
+
+**Income or Wealth**
+
+Talking about income is a good example where we should be careful to use things like median to describe central tendency.
+
+> Use **median** to describe \"average\" salaries or income levels
+
+**Real Estate or Property Values**
+
+Another example is real estate. Usually almost every county has some properties that are very very expensive compared to all the rest. These will weigh on the mean and influence it greatly, so it is better to list property values using things like the median.
+
+> Use **median** to describe \"average\" property or real estate values
+
+So look for the median property value in a county if you are looking for a place to live.
+

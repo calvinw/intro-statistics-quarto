@@ -9,9 +9,19 @@ book:
     - index.Rmd
     - what-is-statistics.Rmd
     - descriptive-and-inferential.Rmd
+    - population-and-sample.Rmd
+    - parameter-and-statistic.Rmd
+    - variables.Rmd
+    - types-of-variables.Rmd
+    - validity-and-reliability.Rmd
+    - dotplots-and-distributions.Rmd
+    - barplots.Rmd
+    - central-tendencies.Rmd
+    - measures-of-spread.Rmd
     - zvalues.Rmd
     - standard-normal-curve.Rmd
     - standard-normal-table.Rmd
+    - standard-normal-areas.Rmd
     - backwards-problems.Rmd
     - latex.Rmd
     - references.qmd
@@ -21,15 +31,5 @@ bibliography: references.bib
 format:
   html:
     theme: journal
-    html-math-method: mathjax
-    include-in-header:
-      - text: |
-          <script>
-          window.MathJax = {
-            tex: {
-              tags: 'ams'
-            }
-          };
-          </script>
   pdf:
     documentclass: scrreprt

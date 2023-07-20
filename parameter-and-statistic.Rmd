@@ -1,0 +1,167 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+
+# Parameter and Statistic {#parameter-and-statistic}
+
+Next we define the terms **parameter** and **statistic**. These go hand and hand with **population** and **sample**.
+
+## Parameter
+
+> A **parameter** is a number that describes a property of the _population_
+
+A parameter is a number we are interested in knowing about the population.
+
+We have already seen one example: a population mean ($\mu$) is an example of a parameter.
+
+**Parameters are computed by using all the data in the population**.
+
+For example the population mean ($\mu$) uses every data value in the population and computes the mean of all that data.
+
+Of course **parameters we almost never have exactly**.
+
+## Statistic
+
+> A **statistic** is a number that describes the same property as above but is computed from the _sample_
+
+A statistic is a number we are interested in but it comes from using only data in the sample, not the whole population.
+
+We have already seen one example: a sample mean ($\bar x$) is an example of a statistic.
+
+**Statistics are computed by using just the data in the sample**.
+
+For example the sample mean ($\bar x$) uses just the data values in the sample and computes the mean from just that data.
+
+TIP: It helps to remember p with p and s with s. Parameter with the population and a statistic is with the sample
+
+I bet you are familiar with hearing the term \"statistic\" with reports.
+Statistics are the numbers that reports cite when they are published.
+
+This is because it is difficult to get parameters since you need data from the whole population.
+
+- Parameters are difficult to compute directly
+- Statistics are easier to compute
+
+It is much easier to use a sample to compute a statistic, then use that statistic to estimate the parameter of interest than it is to try to compute the parameter directly.
+
+## Examples of Parameter and Statistic
+
+:::{#exm-population-and-sample-mean-amount-spent}
+## Population and Sample Mean - Amount Spent
+```{asis echo=TRUE}
+Suppose we wished to estimate the mean amount spent on clothes in 2019 for women over the age of 18 living in Long Island. We send out 100 emails about this, and get back 34 answers. As a result we take the mean of the 34 responses to get an estimate of what we want. Suppose that sample mean of the 34 responses is $2100.
+
+- What is the parameter?
+- What is the statistic?
+
+The population is women over 18 living in Long Island.
+
+The **parameter** is the **mean amount _all_ women living in Long Island spent on clothing in 2019**. This is the population mean and the symbol for it is $\mu$.  We **don\'t know the value exactly** since it is hard to get data from the whole population.
+
+The sample is the 34 women that responded to our email.
+
+The **statistic** is the **mean amount the 34 women in the sample spent on clothing in 2019**. This is the sample mean and the symbol for it is $\bar x$. We **do know this exactly** since we computed it from our sample of 34. It was $2100.
+
+$$
+\bar x = 2100
+$$
+
+This example shows you typically have the statistic, but you don\'t have the parameter.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+This example shows:
+
+
+| |what| symbol  | when to use  |
+|---|---|---|---|
+| population mean | parameter | $\mu$  | for mean of entire population  |
+| sample mean  | statistic | $\bar x$   | for mean of sample |
+
+
+Hopefully the **statistic will allow us to estimate the parameter**. We will talk about this later on.
+
+:::{#exm-instagram-influencer-poll}
+## Instagram Influencer Poll
+```{asis echo=T}
+An NYC food instagram influencer posted a poll about the best pizza places. After a heated debate, they asked their NYC followers to call a number and say the name of which restaurant they thought had the best pizza (charge of \$1 per vote). It turned out that 68% of callers agreed with the influencer's choice.
+
+- What is the population of interest?
+- What is the sample used to study that population?
+
+In this case, the desired population would be all NYC followers of this
+influencer.
+
+The sample consists of any person that called to leave a vote.
+
+- What is the parameter of interest?
+- What is the statistic?
+
+The parameter is the proportion of all NYC followers that agreed with the infulencer.
+
+The statistic is the 68% (computed from the sample) that agreed with the influencer.
+
+- Do you think that 68% is an accurate reflection of all NYC followers of this influencer? If not, identify some of the flaws in the sampling method.
+
+This is asking if the statistic is a good estimate of the parameter.
+
+I do not think this was an accurate reflection of all their NYC followers. Big Nope! Do you think all their NYC followers would actually spend money and also use their time to call up and voice a response to a
+survey? Would you do that?
+
+Anytime you require people to pay to vote in a call-in poll you are likely only to get the people that feel most strongly about it. This may not be representative.
+
+Also, maybe there are some non-New Yorkers who follow this influencer and felt super strongly about their favorite pizza place when they visited.
+Mmm now I want pizza. (What's your favorite place for pizza in NYC? Tell us!)
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+
+
+:::{#exm-population-and-sample-proportion-tiktok-users}
+## Population and Sample Proportion - Tiktok Users
+```{asis echo=TRUE}
+Suppose we wanted to find out what percent of college students have posted on tiktok. Suppose we polled 120 students and found out that 78 of those have posted on tiktok.
+
+- What is the population of interest?
+- What is the sample?
+- What is the parameter?
+- What is the statistic?
+
+The **population** is \"college\" students.
+
+The **sample** is the 120 students that we collected data from in our poll.
+
+The **parameter** we are interested in is the proportion of all students that have posted on tiktok.
+
+We will use the symbol $p$ to stand for **population proportion**. In this case we do not know the value exactly.
+
+The **statistic** is the proportion of the sample that have posted on tiktok.
+
+We will use the symbol $\hat p$ to stand for **sample proportion**. In this case we do know the value of this exactly:
+
+$$
+\hat p = \frac{78}{120} = .65
+$$
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+This example shows:
+
+| |what| symbol  | when to use  |
+|---|---|---|---|
+| population proportion | parameter | $p$  | for proportion of entire population  |
+| sample proportion  | statistic | $\hat p$   | for proportion of sample |
+
+In summary, we gather data from a sample (usually a small number of data
+values) to infer things about a population (usually a large number of
+data values).
+
+Think about how to get a representative sample of a population at
+school. For example, if we want to get information on all the students
+at FIT we cannot just ask the first 20 people leaving one of the
+buildings. This would not be a good sample.
+
+Whenever you hear about a statistic in the news we want you to think about this and what the sample is... and other things too, which we will discuss more in this book!

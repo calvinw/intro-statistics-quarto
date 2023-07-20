@@ -1,0 +1,5 @@
+I want you to help me with some replacement in some code. Each time you find something like the following Examples I want you to replace that code with a replacement as shown in the examples below.
+
+You should output the new version of the entire file when I upload the file for you to process.
+
+Does this make sense?

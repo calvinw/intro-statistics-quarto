@@ -1,0 +1,197 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+
+# Variables {#variables}
+
+Do you think everyone in this course has visited the same number of
+countries or have the same height or have the same favorite band/musical
+artist?
+
+Variability is one of the most fundamental principles of
+statistics.
+
+> A **variable** is **any characteristic of a person or thing that can be assigned a number or a category**.
+
+If we call something a variable it is not a constant. This just means that the value will be dissimilar for different members. We can expect some sort of change in the property we are interested in, just like the ones I mentioned at the beginning of this paragraph. Using statistics we can draw conclusions based on situations that vary.
+
+In the definition of a variable
+
+> The people or things being observed are also referred to as **observational units**.
+
+Our observational units are members of the group we wish to study. The variable is the specific property of the group that we are interested in.
+
+Now let's try some examples together.
+
+Consider the students in this class as the observational units of the group we are interested in.
+
+## Is It a Variable?
+
+Which of the following are variables that can be measured on those observational units?
+
+-   Hair color
+-   Whether or not a student has black hair
+-   Instructor's age
+-   Number of students with purple hair
+-   Height
+-   Height of the shortest student in your class
+-   Zip code of hometown
+
+You just need to ask yourself if each of these is something that varies from student to student.
+
+
+:::{#exm-hair-color}
+## Hair Color
+```{asis echo=TRUE}
+
+Imagine you make a list of all students and record for each their hair color.
+
+For example you might get this:
+
+- Student 1: brown
+- Student 2: black
+- Student 3: purple
+- Student 4: brown
+\...
+
+Does this vary from student to student? **Yes**. That means it **is a variable**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+:::{#exm-whether-or-not-a-student-has-black-hair}
+## Whether or Not A Student Has Black Hair
+
+```{asis example=TRUE, title="Whether or Not A Student Has Black Hair", echo=TRUE}
+
+Imagine you make a list of all students and record for each whether or not the student has black hair.
+
+For example you might get this:
+
+- Student 1: True
+- Student 2: True
+- Student 3: False
+- Student 4: False
+\...
+
+Does this vary from student to student? **Yes**. That means it **is a variable**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+:::{#exm-instructors-age}
+## Instructor's Age
+```{asis example=TRUE, title="Instructor's Age", echo=TRUE}
+
+What about if you record for each student what the instructor's age is?
+
+Let's pretend the instructor is 33 and that the instructor told the students this so that they all know.
+
+Imagine you make a list of all students and record for each their instructor's age.
+
+- Student 1: 33
+- Student 2: 33
+- Student 3: 33
+- Student 4: 33
+\...
+
+Does this vary from student to student? **No**
+
+The **instructor's age** for each student **is the same**,
+
+This is because everyone in the class has the same teacher so everyone will give the same value.
+
+This means it is **not a variable**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+So here we see something very important.
+
+**Something that does not vary from observational unit to observational unit is NOT a variable**.
+
+It **has to vary** and be different for different students **to be a variable**.
+
+Now some students might have the same value (like lots of students have black hair) but if you have the same thing from all your observational units then it is not a variable.
+
+
+:::{#exm-number-of-students-with-purple-hair}
+## Number of Students with Purple Hair
+```{asis echo=TRUE}
+
+For this one, lets pretend there is 1 student in the class with purple hair and everyone can see them and there is no argument about color.
+
+Imagine you make a list of all students and record their answer to the question \"Number of students with purple hair?\"
+
+- Student 1: 1
+- Student 2: 1
+- Student 3: 1
+- Student 4: 1
+\...
+
+Does this vary from student to student? **No**
+
+This is not something that varies from student-to-student.
+
+This means it is **not a variable**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+This is an example of something that is a **sum** or a **total** over all the students. Its a property of the whole class of students and not just each individual student.
+
+So it really doesn't even make sense to try to attribute this to each student. It is a property of the aggregate of all the students.
+
+We will see that sometimes **numbers that summarize the aggregate or whole population or sample are not variables**.
+
+
+```{asis example=TRUE, title="Height", echo=TRUE}
+
+Imagine you make a list of all students and record their data.
+
+- Student 1: 177 cm
+- Student 2: 162 cm
+- Student 3: 159 cm
+- Student 4: 168 cm
+\...
+
+This means it **is a variable**.
+```
+
+:::{#exm-height-of-shortest-student}
+## Height of shortest student
+```{asis example=TRUE, title="Height of Shortest Student", echo=TRUE}
+
+For this one, lets pretend the shortest student is 159 cm.
+
+Imagine you make a list of all students and record their answer to the question \"height of shortest student?\":
+
+- Student 1: 159 cm
+- Student 2: 159 cm
+- Student 3: 159 cm
+- Student 4: 159 cm
+\...
+
+This means it **is a not variable**. It does not change.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+This one is a property of the whole class, and not just each individual student. Its a property of the aggregate and we saw above numbers or properties if the whole sample or population are not variables.
+
+:::{#exm-zip-code}
+## Zip Code
+```{asis example=TRUE, title="Zip Code", echo=TRUE}
+
+Imagine you make a list of all students and record their zip codes.
+
+- Student 1: 10001
+- Student 2: 08619
+- Student 3: 90210
+- Student 4: 11211
+\...
+
+This means it **is a variable**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::

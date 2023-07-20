@@ -25,11 +25,11 @@ $$ {#eq-z-value-formula}
 Lets see some examples of this in action:
 
 
-:::{#exm-find-the-z-value}
+:::{#exm-Find-the-z-value}
 ## Find the z-value
 ```{r}
-knit_example(list(mu=52, x=54, sigma=8), 
-	     "statplosion-problems/question/ZValueQuestion.Rmd", 
+knit_example(list(mu=52, x=54, sigma=8),
+	     "statplosion-problems/question/ZValueQuestion.Rmd",
 	     "statplosion-problems/solution/ZValueSolution.Rmd")
 ```
 :::
@@ -37,11 +37,11 @@ knit_example(list(mu=52, x=54, sigma=8),
 
 Here is an example where we find the z-value of an exam score of $65$:
 
-:::{#exm-find-the-z-value-for-an-exam}
+:::{#exm-Find-the-z-value-for-an-exam}
 ## Find the z-value for an exam
 ```{r}
-knit_example(list(mu=72, x=65, sigma=8), 
-	     "statplosion-problems/question/ZValueQuestion.Rmd", 
+knit_example(list(mu=72, x=65, sigma=8),
+	     "statplosion-problems/question/ZValueQuestion.Rmd",
 	     "statplosion-problems/solution/ZValueSolution.Rmd")
 ```
 :::

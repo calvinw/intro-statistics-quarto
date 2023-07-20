@@ -1,0 +1,18 @@
+---
+pagetitle: "Bottom Percent Demand"
+params:
+  mu: 257
+  sigma: 45
+  area: 0.10
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+area<-params$area
+```
+
+```{r child="statplosion-problems/solution/SolveBackwardsLeftTailSolution.Rmd"}
+```
+
+So any demand value below this would be in the bottom $`r 100*area`\%$ of the demand expectations for this SKU.

@@ -1,0 +1,189 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+```
+
+# Dotplots and Distributions {#dotplots-and-distributions}
+
+Dotplots are visual representations of a set of data. They show the data values in a set of data as \"stacks of dots\" according to how many data values there are. They are very simple, and so are very easy to interpret. If your data set is very big though, they can become cluttered.
+
+Let\'s see some examples.
+
+## Dotplot
+
+For example suppose we have the following data set:
+
+```{r}
+x<-c(6,8,8,9,5,6,8)
+```
+
+$$
+`r x`
+$$
+
+
+Here is the dotplot that goes with this:
+
+```{r, example=T, title="Simple Dotplot", fig.height=4, fig.align="center"}
+dotplot(x, cex=4, main="Dotplot", xlab="Data Values")
+```
+
+You can see there are:
+
+- one 5
+- two 6s
+- three 8s
+- one 9
+
+Dotplots are very good at showing the overall shape of the data. This shape is sometimes called the **distribution**.
+
+So you will hear people speaking about the data and just calling it a \"distribution\".
+
+## Three Important Properties of Distributions
+
+Three very important properties about distributions:
+
+- Are there any peaks?
+- How spread out is the data?
+- Are there any outliers?
+
+### Peaks
+
+For the peaks you might have just one or you might have more than one.
+
+Or you might have none!
+
+Here is some data that we want to look for peaks for:
+
+```{r}
+x<-c(3,3,4,4,4,9,7,5,4,13,11,10,14,2,13,12,12,12,12,7)
+```
+
+$$
+`r sample(x)`
+$$
+
+If we make a dotplot of this data it looks like this:
+
+```{r, example=TRUE, title="Distribution with Two Peaks", fig.align="center", fig.height=4}
+dotplot(x, cex=4, main="Dotplot", xlab="Data Values")
+```
+
+You might describe this like this:
+
+> The data has two peaks, one at 4 and one at 12
+
+You might also have a distribution with no peaks. Here is an example of that:
+
+```{r}
+set.seed(5)
+x<-sample(4:30,10,replace=F)
+```
+
+$$
+`r sample(x)`
+$$
+
+If we make a dotplot of this data it looks like this:
+
+```{r, example=TRUE, title="Distribution With No Peaks", fig.align="center", fig.height=3}
+dotplot(x, cex=3.5, main="Dotplot", xlab="Data Values")
+```
+
+You might describe this like this:
+
+> The data has no peaks
+
+Some people describe peaks as \"clusters\", but it is also possible to have clustering without a peak.
+
+I think it is better to describe \"peaks\" as high points in the distribution and \"clusters\" as data values that are close to each other along the horizontal axis.
+
+You can see an example of clusters that are not peaks below.
+
+### Spread
+
+For the spread of the data, one common way to talk about the spread is to look for the \"range\" it has.
+
+The **range** is from the **minimum** value to the **maximum** value.
+
+Here\'s an example:
+
+```{r}
+set.seed(10)
+x<-round(rnorm(15, mean=30, sd=6))
+```
+
+$$
+`r x`
+$$
+
+If we make a dotplot of this data it looks like this:
+
+```{r, example=TRUE, title="Range of Distribution", fig.align="center", fig.height=3}
+dotplot(x, cex=2, main="Dotplot", xlab="Data Values")
+```
+
+You might describe this like this:
+
+> The range of this data is from `r min(x)` to `r max(x)`
+
+The range is one part important part of the spread. But it is not all of the story. You might also look for clusters of data as well.
+
+Here is another example of some data:
+
+```{r}
+x<-c(3,12,11,13,14,25,26,27,45,46,44,52)
+```
+
+$$
+`r x`
+$$
+
+If we make a dotplot of this data it looks like this:
+
+```{r, example=TRUE, title="Clusters", fig.align="center", fig.height=3}
+dotplot(x, cex=2, main="Dotplot", xlab="Data Values")
+```
+
+You might describe this like this:
+
+> The data is in three clusters, one at about 13, one about 26, and one at 45.
+
+The range of this data is from `r min(x)` to `r max(x)`, but you would also notice this clustering as well.
+
+### Outliers
+
+Finally you might also look for **outliers**.
+
+Outliers are data values that are far from the others in the data, and do not look typical. Sometimes outliers are errors in the data collection process. Sometimes they are just unusual values that happened.
+
+Below is an example three years of demand data for a product.
+
+```{r}
+set.seed(2)
+x<-round(rnorm(36, mean=45, sd=8))
+```
+
+Here are the actual values from the last 36 months for this product:
+
+$$
+`r x`
+$$
+
+Of course we are interested in whether there is some months where demand was very low or some months where the demand was vary high.
+
+We could just look at the numbers above, but it is nice to see this as a graph as well too. So lets look at a dotplot of these values:
+
+```{r, example=TRUE, title="Outliers in Demand", fig.align="center", fig.height=4}
+dotplot(x, cex=2.7, main="36 Months of Demand", xlab="Demand")
+```
+
+You might describe this like this:
+
+> The data has a couple of outliers at 25 and 27
+
+Most of the time the demand for this product was roughly between 34 and 54 but there were some outliers. You might be tempted to ask what happened for those months where the demand was 25 or 27.
+
+Also there are a couple of clusters of high values as well around 58 and 62.
+
+These might not be considered outliers but you would definitely like to understand what is happening there as well.

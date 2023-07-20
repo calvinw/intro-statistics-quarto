@@ -1,0 +1,11 @@
+---
+pagetitle: "Service Level"
+params:
+  z: 1.82
+---
+
+```{r}
+z<-params$z
+```
+
+Suppose that monthly demand in units for a retail product is given by a normal distribution. Find the service level for service factor of $z=`r z`$.

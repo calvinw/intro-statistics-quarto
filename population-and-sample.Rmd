@@ -1,0 +1,141 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+
+# Population and Sample {#population-and-sample}
+
+**Population** and **sample** are terms that you probably have heard but here we want to make sure they are used in a precise way.
+
+## Population
+
+> A **population** is any precisely defined collection of people or things we want to study.
+
+The population is what you want to know about. Its the entire group that is the focus of your interest.
+
+Usually it is a big group, like all voters, or all customers, or all department stores.
+
+And its the entire group you are trying to study. Its not just part of the group you want to study. Its the whole group you want understand!
+
+Here are some examples
+
+:::{#exm-Populations}
+## Populations
+```{asis example=TRUE, title="Populations", echo=TRUE}
+
+- All customers for an online ecommerce site
+- All Nordstrom stores in the United States
+- All twitter posts that mention \"Macy\'s\"
+- All college students that own iphones
+
+These are all entire groups you might want to study. In each case this is the ideal group you want to completely understand.
+
+These are **populations**.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+## Sample
+
+> A **sample** is part of a population you collect data from.
+
+The sample is smaller than the whole population. But it is taken from the population and corresponds to data that we do collect.
+
+Some simple examples:
+
+- **population**: all voters, **sample**: data from 100 voters
+- **population**: all customers, **sample**: data from 1000 customers
+- **population**: all department stores, **sample**: data from 50 stores
+
+In each case a sample corresponds to the **actual data you do collect**.
+It usually is not possible to collect data from everyone in your population. Of course you would like to do that. But most of the time we do not have the resources to gather information about every single member of a population.
+
+So we **study a sample** in order **to understand the population**
+
+This is the key idea in inferential statistics, which we will talk about soon.
+
+Here are some examples of samples using the populations from the last example.
+
+:::{#exm-Samples}
+## Samples
+```{asis, echo=T}
+|  Population | Sample |
+| ----------- | ----------- |
+| All customers for an online ecommerce site|50 customers from that ecommerce site|
+|All Nordstrom stores in US|All Nordstrom stores in tri-state area|
+|All twitter posts mentioning \"Macy\'s\"|100 twitter posts mentioning \"Macy\'s\"|
+|All college students that own iphones|All students in one FIT class that own iphones|
+
+The right column above are all **samples**.
+
+They correspond to data you did collect from the populations in the left column.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+Note that any part of the population you do not collect data from is not in your sample. So anyone you try to collect data from but don\'t is not part of your sample.
+
+For example if you send out 1000 emails to customers of the online ecommerce site, but you only get 50 customers that respond, then the 950 customers that you did not collect data from are not part of your sample.
+
+> A **sample** corresponds only to data you do collect, not any data you try to collect but are unable to
+
+That means **non-responses** are **not part of the sample**. Only data you collect.
+
+Many of you have heard about a **census.** A census is a study that attempts to collect data on the **entire population**. Conducting a census is rarely feasible. The 2020 census was recently due so hopefully you all have experience with a census and every, single household filled it out. Can you say with certainty that every household filled out the census? I don't think we can. That's why we usually take samples. (Did you watch the series, "Who Do You Think You Are?" They tend to look at a census to find relatives.)
+
+Let's see an example of something about a population we might be interested in:
+
+:::{#exm-Population-and-Sample}
+## Population and Sample
+```{asis echo=TRUE}
+Suppose we wished to estimate the average amount spent on clothes in 2019 for women over the age of 18 living in Long Island. We send out 100 emails about this, and get back 34 answers. As a result we take the average of the 34 responses to get an estimate of what we want.
+
+- What is the population?
+- What is the sample?
+
+In this case, the **population** would be all Long Island women over the age of 18. We would like to get the amount spent for every one of the women in our population, and then we would take the average of that to get what we want.
+
+But instead, we settle for a **sample**. How big is the sample?
+
+The sample is the 34 women we hear back from. It does not include any of the non-responses out of the 100 emails we sent. Only those that responded.
+
+So the sample size is $n=34$ in this case.
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+## Population Mean vs Sample Mean
+
+**Population Mean**
+
+In the example above notice that we would like to do a calculation involving the data from the whole population. We would like to average the amounts spent on clothing from all women from Long Island. That is the average we really want.
+
+The average over all the population is called a **population mean**
+and the symbol for it is $\mu$ (the greek letter \"mu\").
+
+> $\mu$ is the symbol for **population mean**
+
+Ideally we want this value.
+
+**Sample Mean**
+
+But in fact we have to settle for a different average, we have to settle for the average over all the amounts spent in our sample, which is the 34 amounts we got back from the women in our sample.
+
+This average over the sample is called a **sample mean** and the symbol for it is $\bar x$ (called \"x bar\").
+
+> $\bar x$ is the symbol for **sample mean**
+
+Realistically all we can expect to get is this value.
+
+**Sample Mean Estimates the Population Mean**
+
+We hope that the sample mean is close to the population mean so that we can use the sample mean to estimate the population mean.
+
+> The sample mean $\bar x$ is an estimate for population mean $\mu$
+
+How good is the estimate?  That depends...
+
+It depends on things like the sample size, whether the sample is a random sample and represents the population well. We will discuss these things later.
+
+But keep in mind that fundamental idea behind inferential statistics is to estimate something about the population from a sample.
+
+In the next chapter we will look at more of this idea.

@@ -1,0 +1,18 @@
+---
+pagetitle: "Inventory Level"
+params:
+  mu: 340
+  sigma: 80
+  area: 0.95
+---
+
+```{r}
+mu<-params$mu
+sigma<-params$sigma
+area<-params$area
+```
+
+```{r child="statplosion-problems/solution/SolveBackwardsLeftTailSolution.Rmd"}
+```
+
+So you should have at least $`r ceiling(x)`$ for inventory to insure you have a $`r 100*area`\%$ service level.

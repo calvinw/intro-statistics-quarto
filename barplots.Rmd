@@ -1,0 +1,155 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+library("statplosion")
+options(scipen=999)
+```
+
+```{r}
+barchart<-function(x,
+                   names,
+                   xlab="x",
+                   ylab="y",
+                   main="Title") {
+    ymax <- max(x)
+    g<-barplot(x,
+            names.arg=names,
+            las=1,
+            xlab=xlab,
+            ylim=c(0,ymax*1.1),
+            ylab=ylab,
+            main=main)
+    text(g, x, labels=x, pos=3)
+}
+```
+
+
+# Barplots {#barplots}
+
+Most people are familar with bar charts. They show amounts for different categories.
+
+The amounts will typically be either counts (frequencies) or percents.
+
+We look at an example of both here.
+
+
+## Market Share
+
+Suppose the following fashion stores having competing products with the following market shares:
+
+```{r}
+sales<-c(200000,100000,600000,300000)
+company<-c("Pop Shop","Tommy Go Figure","Never 42","Country Infitters")
+df<-data.frame(Company=company, Sales=sales)
+kable(df, "markdown")
+```
+Here is the barplot that goes with this:
+
+```{r, example=T, title="Market Share By Dollars", fig.align="center"}
+barchart(sales,company,xlab="",ylab="", main="Market Share By Dollars")
+```
+
+Now suppose we want the percentage breakdown of these market shares:
+
+- From `r company[1]`:
+
+$$
+\frac{`r sales[1]`}{`r sum(sales)`} =
+`r round(sales[1]/sum(sales)*100)`\%
+$$
+
+- From `r company[2]`:
+
+$$
+\frac{`r sales[2]`}{`r sum(sales)`} =
+`r round(sales[2]/sum(sales)*100)`\%
+$$
+
+- From `r company[3]`:
+
+$$
+\frac{`r sales[3]`}{`r sum(sales)`} =
+`r round(sales[3]/sum(sales)*100)`\%
+$$
+
+- From `r company[4]`:
+
+$$
+\frac{`r sales[4]`}{`r sum(sales)`} =
+`r round(sales[4]/sum(sales)*100)`\%
+$$
+
+So here is the market share by percentage:
+
+```{r}
+s<-sum(sales)
+percents <- round(100*sales/s)
+percentsdf<-data.frame(Company=company, Percent=percents)
+kable(percentsdf, "markdown")
+```
+
+Now if we make a barplot with percentages this looks like this:
+
+:::{#exm-market-share-by-percent}
+## Market Share By Percent
+```{r, fig.align="center"}
+barchart(percents,company, xlab="",ylab="percents %", main="Market Share By Percent")
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+Of course the graph does not look any different, but it is nice to see the percentage breakdown in the chart easily.
+
+```{r}
+knit_exit()
+```
+
+## Market Share with Competitor
+
+Now suppose a competitor "Country Infitter" is going to introduce a product that competes with the above.
+
+Suppose it is expected they will generate \$100,000 and will take 3/4 of their revenues from the existing stores.
+
+We assume they will take dollar amounts based on their percents:
+
+
+- From `r company[1]`:
+$$
+.25(`r sales[1]`)=`r .25*sales[1]`
+$$
+- From `r company[2]`:
+$$
+.25(`r sales[2]`)=`r .25*sales[2]`
+$$
+- From `r company[3]`:
+$$
+  .25(`r sales[3]`)=`r .25*sales[3]`
+$$
+
+from each of the companies.
+
+```{r}
+new<-.75*sales
+new<-c(new,100000)
+company<-c(company, "Country Infitter")
+```
+
+:::{#exm-market-share-by-dollar}
+## Market Share By Dollar
+```{r, fig.align="center"}
+barchart(new,company,xlab="",ylab="dollars $", main="Market Share By Dollars")
+```
+$$ \tag*{$\blacksquare$} $$
+:::
+
+And here is the new market share given by percents
+
+```{r}
+s<-sum(new)
+percents <- round(100*new/s)
+percentsdf<-data.frame(Company=company, Percent=percents)
+kable(percentsdf, "markdown")
+```
+
+```{r, example=T, title="New Market Share by Percent", fig.align="center"}
+barchart(percents,company,xlab="",ylab="percents %", main="Market Share By Percent")
+```

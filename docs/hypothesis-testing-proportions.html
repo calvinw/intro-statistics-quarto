@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>20&nbsp; Hypothesis Testing - Proportions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./sample-means-distribution.html" rel="next">
+<link href="./confidence-intervals-prop.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./hypothesis-testing-proportions.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing - Proportions</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro Statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Foreward</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what-is-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What is Statistics?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descriptive-and-inferential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive and Inferential Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./population-and-sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Population and Sample</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./parameter-and-statistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Parameter and Statistic</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./types-of-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Types of Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./validity-and-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Validity and Reliability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dotplots-and-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dotplots and Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./barplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Barplots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./central-tendencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Central Tendencies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./measures-of-spread.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Measures of Spread</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./zvalues.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Z-Values</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard-normal-curve.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Standard Normal Curve</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard-normal-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Standard Normal Table</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard-normal-areas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Standard Normal Areas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./backwards-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Backwards Problems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sample-proportions-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Sampling Distribution of Sample Proportions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence-intervals-prop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Confidence Intervals For Proportions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis-testing-proportions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing - Proportions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sample-means-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sampling Distribution of Sample Means</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence-intervals-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Confidence Intervals For Means</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis-testing-means.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Hypothesis Testing - Means</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simple-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Simple Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression-slope-intercept.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Regression SLOPE and INTERCEPT</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simple-regression-significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Is This a Significant Linear Relationship?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression-toolpak.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Using the ToolPak for Regression Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rsquared.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">R-Squared (<span class="math inline">\(r^2\)</span>)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./z-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Z Table For Standard Normal Distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Straight Line Review</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#steps-for-hypothesis-testing" id="toc-steps-for-hypothesis-testing" class="nav-link active" data-scroll-target="#steps-for-hypothesis-testing"><span class="header-section-number">20.1</span> Steps for Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#write-down-the-claimed-null-hypothesis" id="toc-write-down-the-claimed-null-hypothesis" class="nav-link" data-scroll-target="#write-down-the-claimed-null-hypothesis">1) Write down the claimed null hypothesis</a></li>
+  <li><a href="#write-down-the-alternative-hypothesis" id="toc-write-down-the-alternative-hypothesis" class="nav-link" data-scroll-target="#write-down-the-alternative-hypothesis">2) Write down the alternative hypothesis</a></li>
+  <li><a href="#take-a-random-sample-from-the-population-and-compute-the-sample-proportion" id="toc-take-a-random-sample-from-the-population-and-compute-the-sample-proportion" class="nav-link" data-scroll-target="#take-a-random-sample-from-the-population-and-compute-the-sample-proportion">3) Take a (random) sample from the population and compute the sample proportion</a></li>
+  <li><a href="#compute-the-z-score-for-the-test-statistic" id="toc-compute-the-z-score-for-the-test-statistic" class="nav-link" data-scroll-target="#compute-the-z-score-for-the-test-statistic">4) Compute the z-score for the test statistic</a></li>
+  <li><a href="#find-the-the-p-value" id="toc-find-the-the-p-value" class="nav-link" data-scroll-target="#find-the-the-p-value">5) Find the the P-value</a></li>
+  <li><a href="#a-find-the-conclusion-from-the-p-value" id="toc-a-find-the-conclusion-from-the-p-value" class="nav-link" data-scroll-target="#a-find-the-conclusion-from-the-p-value">6a) Find the conclusion from the P-value</a></li>
+  <li><a href="#b-find-the-conclusion-from-level-of-significance" id="toc-b-find-the-conclusion-from-level-of-significance" class="nav-link" data-scroll-target="#b-find-the-conclusion-from-level-of-significance">6b) Find the conclusion from level of significance</a></li>
+  </ul></li>
+  <li><a href="#other-terminology" id="toc-other-terminology" class="nav-link" data-scroll-target="#other-terminology"><span class="header-section-number">20.2</span> Other terminology</a></li>
+  <li><a href="#type-i-and-type-ii-error" id="toc-type-i-and-type-ii-error" class="nav-link" data-scroll-target="#type-i-and-type-ii-error"><span class="header-section-number">20.3</span> Type I and Type II Error</a></li>
+  <li><a href="#examples-of-hypothesis-testing" id="toc-examples-of-hypothesis-testing" class="nav-link" data-scroll-target="#examples-of-hypothesis-testing"><span class="header-section-number">20.4</span> Examples of Hypothesis Testing</a></li>
+  <li><a href="#applications-of-hypothesis-testing" id="toc-applications-of-hypothesis-testing" class="nav-link" data-scroll-target="#applications-of-hypothesis-testing"><span class="header-section-number">20.5</span> Applications of Hypothesis Testing</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="hypothesis-testing-proportions" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing - Proportions</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Remember we said that typically we do not know things like parameters for populations. For example we don’t always know population proportions in situations we are interested in.</p>
+<p>But suppose <strong>someone claims that a population proportion is some value</strong> (like 75%).</p>
+<p>What kinds of sample proportions would we expect to get from such a population?</p>
+<p>If you remember the Central Limit Theorem it says that in this case the sampling distribution of sample proportions would look something like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>with the middle of it at .75.</p>
+<p>So if this were true, if we took sample proportions we would usually wind up near .75, and more rarely we would get sample proportions that would be farther away.</p>
+<p>We can use this idea to <strong>test the claim that the population proportion is equal to the claimed value</strong>.</p>
+<p>This is called a <strong>hypothesis test</strong> of the (claimed) population proportion. The results from a hypothesis test will be roughly this:</p>
+<ul>
+<li>If our <strong>sample proportion is too far away</strong> we say it is <strong>evidence against the claim</strong>.</li>
+<li>If our <strong>sample proportion is close to the middle</strong>, we say it is <strong>no evidence against the claim</strong>.</li>
+</ul>
+<p>Basically if the sample proportion is too far away from the (claimed) population proportion, we believe that claim about the population proportion may be bogus.</p>
+<p>Now remember someone can claim anything, even something outrageous.… Like “90% of Republicans will vote for Obama” or “FIT consists of 50% male students”.</p>
+<p>With Hypothesis Testing we can test the validity of such claims (and more reasonable claims too).</p>
+<p>By looking at a sample, and examining how close the sample proportion is to the (claimed) population proportion we can figure out whether the claim makes sense or not.</p>
+<section id="steps-for-hypothesis-testing" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="steps-for-hypothesis-testing"><span class="header-section-number">20.1</span> Steps for Hypothesis Testing</h2>
+<p>Note: We use <span class="math inline">\(p_{0}\)</span> as the notation for the proposed population proportion. You should think of this as an actual number like <span class="math inline">\(.32\)</span> or <span class="math inline">\(.75\)</span>. It is the <strong>claimed</strong> population proportion.</p>
+<section id="write-down-the-claimed-null-hypothesis" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="write-down-the-claimed-null-hypothesis">1) Write down the claimed null hypothesis</h3>
+<p><span class="math inline">\(H_{0}:\ p = p_{0}\)</span></p>
+<p>This is called null hypothesis (or “H zero”) and its interpretation in words is this:</p>
+<p>“<strong>The population proportion is equal to <span class="math inline">\(p_{0}\)</span></strong>”</p>
+</section>
+<section id="write-down-the-alternative-hypothesis" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="write-down-the-alternative-hypothesis">2) Write down the alternative hypothesis</h3>
+<p>This will be one of the following types:</p>
+<ul>
+<li><span class="math inline">\(H_{a}:\ p &lt; p_{0}\)</span> (This one is called a <strong>left tail test</strong> )</li>
+</ul>
+<p>This one is interpreted “<strong>the population proportion is less than <span class="math inline">\(p_{0}\)</span></strong>”</p>
+<ul>
+<li><span class="math inline">\(H_{a}:\ p &gt; p_{0}\)</span> (This one is called a <strong>right tail test</strong> )</li>
+</ul>
+<p>This one is interpreted “<strong>the population proportion is greater than <span class="math inline">\(p_{0}\)</span></strong>”</p>
+<ul>
+<li><span class="math inline">\(H_{a}:\ p \neq p_{0}\)</span> (This one is called a <strong>two tail test</strong> )</li>
+</ul>
+<p>This one is interpreted “<strong>the population proportion is not equal to <span class="math inline">\(p_{0}\)</span></strong>”</p>
+<p>Which of these you pick depends on what you (as the researcher) want to show about the population proportion:</p>
+<ul>
+<li>If you think it is actually smaller than what was claimed, pick the <strong>left tail test</strong></li>
+<li>If you think it is actually bigger than what was claimed, pick the <strong>right tail test</strong></li>
+<li>If you just want to show its different from what was claimed, and you don’t care about how it is different (bigger or smaller would be fine from your viewpoint), pick the <strong>two tailed test</strong></li>
+</ul>
+</section>
+<section id="take-a-random-sample-from-the-population-and-compute-the-sample-proportion" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="take-a-random-sample-from-the-population-and-compute-the-sample-proportion">3) Take a (random) sample from the population and compute the sample proportion</h3>
+<p><span class="math display">\[
+\widehat{p} = \frac{count}{\text{sample size}} = \frac{count}{n}
+\]</span></p>
+<p>This is called the <strong>test statistic</strong></p>
+</section>
+<section id="compute-the-z-score-for-the-test-statistic" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="compute-the-z-score-for-the-test-statistic">4) Compute the z-score for the test statistic</h3>
+<p><span class="math display">\[
+z = \frac{\widehat{p}-p_{0}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}
+\]</span></p>
+<p>Here you use the (proposed) population proportion <span class="math inline">\(p_{0}\)</span> and the <span class="math inline">\(\widehat{p}\)</span> is the sample proportion you got in the previous step.</p>
+</section>
+<section id="find-the-the-p-value" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="find-the-the-p-value">5) Find the the P-value</h3>
+<p>The <strong>P-value</strong> is what you use to conclude your test.</p>
+<p>Its value represents the chance that you get your sample proportion or something more extreme given that the null hypothesis is true.</p>
+<p>In more concrete terms, it is going to be an area (left tail, right tail or both) that comes from your sample proportion.</p>
+<p>Here is how you compute it:</p>
+<ul>
+<li>For <strong>left tail test</strong>, the <span class="math inline">\(P = \text{left tail area}\)</span></li>
+<li>For <strong>right tail test</strong>, the <span class="math inline">\(P = \text{right tail area}\)</span></li>
+<li>For <strong>two tail test</strong>, the <span class="math inline">\(P = 2(\text{area of tail})\)</span></li>
+</ul>
+<p>To get these areas you just use the z-value from step #4 above and compute them from that.</p>
+</section>
+<section id="a-find-the-conclusion-from-the-p-value" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a-find-the-conclusion-from-the-p-value">6a) Find the conclusion from the P-value</h3>
+<p>To find your conclusion for a hypothesis test once you have your P-value you can use the following guide based on the size of the P-value:</p>
+<ul>
+<li>P-value bigger than .1, then <strong>little or no</strong> evidence against&nbsp; <span class="math inline">\({H_{0}}_{}\)</span></li>
+<li>P-value between .05 and .1, then <strong>some</strong> evidence against <span class="math inline">\({H_{0}}_{}\)</span></li>
+<li>P-value between .01 and .05, then <strong>moderate</strong> evidence against&nbsp;<span class="math inline">\({H_{0}}_{}\)</span></li>
+<li>P-value between .001 and .01, then <strong>strong</strong> evidence against&nbsp;<span class="math inline">\({H_{0}}_{}\)</span></li>
+<li>P-value less than .001, then <strong>very strong</strong> evidence against&nbsp;<span class="math inline">\({H_{0}}_{}\)</span></li>
+</ul>
+<p>One thing to notice about the conclusions is: <strong>small P-values are evidence against the null hypothesis.</strong></p>
+<p>That’s because a small P-value represents a small area for a tail and that happens when the z-value (and hence the sample proportion) is more extreme.</p>
+<div id="exm-conclusion-of-hypothesis-test" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.1 (Conclusion of Hypothesis Test) </strong></span>&nbsp;</p>
+<div class="cell" data-example="true" title="Conclusion of Hypothesis Test">
+<p>Suppose you are doing a hypothesis test and you find out that your P-value is <span class="math inline">\(p=.047\)</span>.</p>
+<p>Since</p>
+<p><span class="math display">\[
+.01 &lt; .047 &lt; .05
+\]</span></p>
+<p>This means that your conclusion is <strong>moderate</strong> evidence against the null <span class="math inline">\(H_0\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="b-find-the-conclusion-from-level-of-significance" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="b-find-the-conclusion-from-level-of-significance">6b) Find the conclusion from level of significance</h3>
+<p>Sometimes the conclusion part of a hypothesis test is done in a different way than the above step 6a.</p>
+<p>If you are given a <strong>level of significance</strong> (called <span class="math inline">\(\alpha\)</span>) you decide your conclusion in a slightly different way:</p>
+<ul>
+<li>If <span class="math inline">\(P &lt; \alpha\)</span>, then you <strong>Reject the null hypothesis</strong></li>
+<li>If <span class="math inline">\(P \geq \alpha\)</span>, then you <strong>Fail to reject the null hypothesis</strong></li>
+</ul>
+<p>Some people use the term <strong>accept the null hypothesis</strong> instead of <strong>fail to reject the null hypothesis</strong>. We take these to be equivalent.</p>
+<p>Using the level of signifcance like this means you state your conclusion differently than in section 6a above. The <span class="math inline">\(\alpha\)</span> is more like a <strong>cut-off</strong> for rejecting the null hypothesis in this case.</p>
+<p>And in the case you either <strong>reject the null</strong> or <strong>fail to reject the null</strong>, and there is no othersituation (no “moderate evidence” or “very strong evidence”… just reject or not plain and simple)</p>
+<div id="exm-level-of-significance" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.2 (Level of Significance) </strong></span>&nbsp;</p>
+<div class="cell">
+<p>Suppose you are doing a hypothesis test at the 5% level of significance,(which is <span class="math inline">\(\alpha=.05\)</span>) and you find out that your P-value is <span class="math inline">\(P=.023\)</span>.</p>
+<p>Since</p>
+<p><span class="math display">\[
+.023 &lt; .05
+\]</span></p>
+<p>This means that <span class="math inline">\(P &lt; \alpha\)</span> and so you <strong>reject the null hypothesis</strong>.</p>
+</div>
+</div>
+<p>So in this case you decide your conclusion by comparing to the given <span class="math inline">\(\alpha\)</span> value and not by the method in section 6a. If your P-value is smaller than <span class="math inline">\(\alpha\)</span>, you <strong>reject the null hypothesis</strong>, otherwise you <strong>fail to reject the null hypothesis</strong>.</p>
+</section>
+</section>
+<section id="other-terminology" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="other-terminology"><span class="header-section-number">20.2</span> Other terminology</h2>
+<p>Sometimes you will hear people say <strong>accept the null hypothesis</strong> when <span class="math inline">\(p \geq \alpha\)</span>. This is just a different way of saying <strong>fail to reject the null hypothesis</strong>.</p>
+<p>Finally keep this is mind as well:</p>
+<ul>
+<li><strong>reject the null hypothesis</strong> means you believe the alternative</li>
+<li><strong>failure to reject the null hypothesis</strong> means you believe the null could be true</li>
+</ul>
+<p>And one more that is like a court case verdict:</p>
+<ul>
+<li><strong>reject the null hypothesis</strong> is in favor of <span class="math inline">\(H_a\)</span></li>
+<li><strong>failure to reject the null hypothesis</strong> is in favor of <span class="math inline">\(H_0\)</span></li>
+</ul>
+</section>
+<section id="type-i-and-type-ii-error" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="type-i-and-type-ii-error"><span class="header-section-number">20.3</span> Type I and Type II Error</h2>
+<p>Let us take a minute to mention two types of errors that take place with hypothesis testing called <strong>Type I Error</strong> and <strong>Type II Error.</strong></p>
+<p>Here are the complete options when you’re dealing with these hypothesis tests. Recall that <span class="math inline">\(H_0\)</span> stands for the null hypothesis. Also we will use the phrase "accept <span class="math inline">\(H_0\)</span>" instead of "fail to reject <span class="math inline">\(H_0\)</span>". These mean the same thing.</p>
+<ul>
+<li>If <span class="math inline">\(H_0\)</span> is actually true and in our testing we accept <span class="math inline">\(H_0\)</span> then there is no mistake</li>
+<li>If <span class="math inline">\(H_0\)</span> is actually false and in our testing we reject <span class="math inline">\(H_0\)</span> then there is no mistake</li>
+<li>If <span class="math inline">\(H_0\)</span> is actually true and in our testing we reject <span class="math inline">\(H_0\)</span> then that is a mistake and this is called a <strong>Type I Error</strong></li>
+<li>If <span class="math inline">\(H_0\)</span> is actually false and in our testing we accept <span class="math inline">\(H_0\)</span> then that is a mistake and this is called a <strong>Type II Error</strong>.</li>
+</ul>
+<p>Most people give a guilty vs.&nbsp;innocent example so we will too.</p>
+<ul>
+<li>If an innocent person is not convicted then there is no mistake</li>
+<li>If a guilty person is convicted then there is no mistake</li>
+<li>If an innocent person is convicted then that is a mistake and is called a <strong>Type I Error</strong></li>
+<li>If a guilty person is not convicted then that is a mistake and is called a <strong>Type II Error</strong></li>
+</ul>
+<p>These errors can impact our daily lives in a huge way, like in the example mentioned above. More everyday examples include construction projects, our safety, and more.</p>
+</section>
+<section id="examples-of-hypothesis-testing" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="examples-of-hypothesis-testing"><span class="header-section-number">20.4</span> Examples of Hypothesis Testing</h2>
+<p>The first example is a left tail test:</p>
+<div id="exm-left-tail-hypothesis-test-proportions" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.3 (Left Tail Hypothesis Test Proportions) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p>Suppose someone claims a population proportion is <span class="math inline">\(79\%\)</span> but we believe that it is less than this. To test this we take a sample proportion and get <span class="math inline">\(190\)</span> out of <span class="math inline">\(250\)</span>. Perform a hypothesis test for this situation.</p>
+<p><strong><em>Solution:</em></strong></p>
+<p>The claim about the population proportion involves <span class="math inline">\(0.79\)</span>.</p>
+<p>Here are the null and the alternative hypotheses:</p>
+<p><span class="math display">\[\begin{align}
+H_0:p &amp;= 0.79 \\
+H_a:p &amp;&lt; 0.79
+\end{align}\]</span></p>
+<ul>
+<li>The null hypothesis says <strong>The population proportion is <span class="math inline">\(0.79\)</span></strong></li>
+<li>The alternative hypothesis says <strong>The population proportion is less than <span class="math inline">\(0.79\)</span></strong></li>
+</ul>
+<p>Before we start we check the conditions of the Central Limit Theorem to make sure we can use a normal distribution here:</p>
+<p><span class="math inline">\(np=(250)(0.79)= 197.5\)</span> and <span class="math inline">\(n(1-p)=(250)(0.21)= 52.5\)</span></p>
+<p>Since these are both at least <span class="math inline">\(5\)</span> we are in good shape.</p>
+<p>Now if the null hypothesis is true, the Central Limit Theorem says the sampling distribution of sample proportions would look like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next we look at our test statistic, which is just our sample proportion:</p>
+<p><span class="math display">\[\begin{equation}
+\hat p = \frac{count}{n} = \frac{190}{250} = 0.76
+\end{equation}\]</span></p>
+<p>So we want to know how likely it is to get a sample proportion of 0.76 in this situation.</p>
+<p>In fact the <strong>P-value is just this left tail area</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We want the shaded <strong><em>left tail area</em></strong> that is to the left of <span class="math inline">\(\hat p = 0.76\)</span>:</p>
+<p>We will find this area by changing the sample proportion <span class="math inline">\(\hat p\)</span> into a z-value and using the standard normal table.</p>
+<p>First we need the calculation of the standard deviation since we need this in our z-value calculation:</p>
+<p><span class="math display">\[\begin{equation}
+\small{
+stdev=\sqrt{\frac{(1-p)p}{n}}
+=\sqrt{\frac{(1-0.79)0.79}{250}}
+=\sqrt{\frac{(0.21)0.79}{250}}
+=\sqrt{\frac{0.1659}{250}}
+=0.0257604
+}
+\end{equation}\]</span></p>
+<p>Now lets find the z-value using the sample proportion <span class="math inline">\(\hat p= 0.76\)</span>, the population proportion <span class="math inline">\(p=0.79\)</span> and the standard deviation <span class="math inline">\(stdev\)</span> we just found:</p>
+<p><span class="math display">\[\begin{equation}
+z=\frac{\hat p-p}{stdev}
+=\frac{0.76-0.79}{0.0257604}
+=\frac{-0.03}{0.0257604}
+=-1.16
+\end{equation}\]</span></p>
+<p>So here is the equivalent left tail area for of <span class="math inline">\(z=-1.16\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This area is the same size as our original area so we just find this one using the standard normal distribution.</p>
+<p>We can look up the area in the standard normal z-table using <span class="math inline">\(z=-1.16\)</span></p>
+<p>We go to the row that has -1.1 and then to the column that contains .06 and we see this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table id="tab:unnamed-chunk-16" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;"></td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.00</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.01</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.02</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.03</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.04</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.05</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.06</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.07</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.08</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">-1.2</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1151</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1131</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1112</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1093</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1075</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1056</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1038</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1020</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1003</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0985</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">-1.1</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1357</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1335</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1314</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1292</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1271</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.1251</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(217, 217, 217); font-weight: bold; font-size: 11pt;">.1230</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1210</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1190</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1170</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">-1.0</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1587</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1562</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1539</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1515</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1492</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1469</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1446</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1423</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1401</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.1379</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>So that means the <strong>P-value</strong> we need in this situation is:</p>
+<p><span class="math display">\[\begin{equation}
+P = \text{left tail area} =0.123
+\end{equation}\]</span></p>
+<p>So based on this our conclusion is that this is <strong>little or no evidence against the null hypothesis</strong>.</p>
+<p><span class="math display">\[
+\tag*{$\blacksquare$}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Now let’s see an example of a right tail test:</p>
+<div id="exm-right-tail-hypothesis-test-proportions" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.4 (Right Tail Hypothesis Test-Proportions) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p>Suppose someone claims a population proportion is <span class="math inline">\(34\%\)</span> but we believe that it is more than this. To test this we take a sample proportion and get <span class="math inline">\(101\)</span> out of <span class="math inline">\(250\)</span>. Perform a hypothesis test for this situation.</p>
+<p><strong><em>Solution:</em></strong></p>
+<p>The claim about the population proportion involves <span class="math inline">\(0.34\)</span>.</p>
+<p>Here are the null and the alternative hypotheses:</p>
+<p><span class="math display">\[\begin{align}
+H_0:p &amp;= 0.34 \\
+H_a:p &amp;&gt; 0.34
+\end{align}\]</span></p>
+<ul>
+<li>The null hypothesis says <strong>The population proportion is <span class="math inline">\(0.34\)</span></strong></li>
+<li>The alternative hypothesis says <strong>The population proportion is more than <span class="math inline">\(0.34\)</span></strong></li>
+</ul>
+<p>Before we start we check the conditions of the Central Limit Theorem to make sure we can use a normal distribution here:</p>
+<p><span class="math inline">\(np=(250)(0.34)= 85\)</span> and <span class="math inline">\(n(1-p)=(250)(0.66)= 165\)</span></p>
+<p>Since these are both at least <span class="math inline">\(5\)</span> we are in good shape.</p>
+<p>Now if the null hypothesis is true, the Central Limit Theorem says the sampling distribution of sample proportions would look like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next we look at our test statistic, which is just our sample proportion:</p>
+<p><span class="math display">\[\begin{equation}
+\hat p = \frac{count}{n} = \frac{101}{250} = 0.404
+\end{equation}\]</span></p>
+<p>So we want to know how likely it is to get a sample proportion of 0.404 in this situation.</p>
+<p>In fact the <strong>P-value is just this right tail area</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We want the shaded <strong><em>right tail area</em></strong> that is to the right of <span class="math inline">\(\hat p = 0.404\)</span>:</p>
+<p>We will find this area by changing the sample proportion <span class="math inline">\(\hat p\)</span> into a z-value and using the standard normal table.</p>
+<p>First we need the calculation of the standard deviation since we need this in our z-value calculation:</p>
+<p><span class="math display">\[\begin{equation}
+\small{
+stdev=\sqrt{\frac{(1-p)p}{n}}
+=\sqrt{\frac{(1-0.34)0.34}{250}}
+=\sqrt{\frac{(0.66)0.34}{250}}
+=\sqrt{\frac{0.2244}{250}}
+=0.02996
+}
+\end{equation}\]</span></p>
+<p>Now lets find the z-value using the sample proportion <span class="math inline">\(\hat p= 0.404\)</span> the population proportion <span class="math inline">\(p=0.34\)</span> and the standard deviation <span class="math inline">\(stdev\)</span> we just found:</p>
+<p><span class="math display">\[\begin{equation}
+z=\frac{\hat p-p}{stdev}
+=\frac{0.404-0.34}{0.02996}
+=\frac{0.064}{0.02996}
+=2.14
+\end{equation}\]</span></p>
+<p>So here is the equivalent right tail area for of <span class="math inline">\(z=2.14\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This area is the same size as our original area so we just find this one using the standard normal distribution.</p>
+<p>We can find the right tail area for <span class="math inline">\(z=2.14\)</span> by finding the left tail area and then subtracting that from 1.0.</p>
+<p>So lets look up the left tail area first. Go to the row that has 2.1 and then to the column that contains .04 and we see this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table id="tab:unnamed-chunk-25" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;"></td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.00</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.01</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.02</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.03</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.04</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.05</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.06</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.07</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.08</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">2.0</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9772</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9778</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9783</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9788</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9793</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9798</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9803</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9808</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9812</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9817</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">2.1</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9821</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9826</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9830</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9834</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(217, 217, 217); font-weight: bold; font-size: 11pt;">.9838</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9842</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9846</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9850</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9854</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9857</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">2.2</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9861</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9864</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9868</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9871</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9875</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9878</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9881</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9884</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9887</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9890</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>So that means the left tail area we need in this situation is:</p>
+<p><span class="math display">\[\begin{equation}
+\text{left tail area} =0.9838
+\end{equation}\]</span></p>
+<p>This means that the right tail that we want to find is going to be this left tail subtracted from 1.0.</p>
+<p><span class="math display">\[\begin{equation}
+P = \text{right tail area} = 1.0 - 0.9838 = 0.0162
+\end{equation}\]</span></p>
+<p>So based on this our conclusion is that this is <strong>moderate evidence against the null hypothesis</strong>.</p>
+<p><span class="math display">\[
+\tag*{$\blacksquare$}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="applications-of-hypothesis-testing" class="level2" data-number="20.5">
+<h2 data-number="20.5" class="anchored" data-anchor-id="applications-of-hypothesis-testing"><span class="header-section-number">20.5</span> Applications of Hypothesis Testing</h2>
+<p>Here is an application about selling clothes online:</p>
+<div id="exm-selling-clothes-online" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.5 (Selling Clothes Online) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p>Your company is trying to figure out what percentage of students sell clothes online at a website like Poshmark at some point in their college career. They think that <span class="math inline">\(40\%\)</span> of students do it. You believe it is more than this. You take a sample of <span class="math inline">\(700\)</span> graduating seniors. You find out that <span class="math inline">\(313\)</span> of them have sold clothes online at some point while in college. Does your evidence support the claim of your company?</p>
+<p><strong><em>Solution:</em></strong></p>
+<p>The claim about the population proportion involves <span class="math inline">\(0.4\)</span>.</p>
+<p>Here are the null and the alternative hypotheses:</p>
+<p><span class="math display">\[\begin{align}
+H_0:p &amp;= 0.4 \\
+H_a:p &amp;&gt; 0.4
+\end{align}\]</span></p>
+<ul>
+<li>The null hypothesis says <strong>The population proportion is <span class="math inline">\(0.4\)</span></strong></li>
+<li>The alternative hypothesis says <strong>The population proportion is more than <span class="math inline">\(0.4\)</span></strong></li>
+</ul>
+<p>Before we start we check the conditions of the Central Limit Theorem to make sure we can use a normal distribution here:</p>
+<p><span class="math inline">\(np=(700)(0.4)= 280\)</span> and <span class="math inline">\(n(1-p)=(700)(0.6)= 420\)</span></p>
+<p>Since these are both at least <span class="math inline">\(5\)</span> we are in good shape.</p>
+<p>Now if the null hypothesis is true, the Central Limit Theorem says the sampling distribution of sample proportions would look like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next we look at our test statistic, which is just our sample proportion:</p>
+<p><span class="math display">\[\begin{equation}
+\hat p = \frac{count}{n} = \frac{313}{700} = 0.4471429
+\end{equation}\]</span></p>
+<p>So we want to know how likely it is to get a sample proportion of 0.4471429 in this situation.</p>
+<p>In fact the <strong>P-value is just this right tail area</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We want the shaded <strong><em>right tail area</em></strong> that is to the right of <span class="math inline">\(\hat p = 0.4471429\)</span>:</p>
+<p>We will find this area by changing the sample proportion <span class="math inline">\(\hat p\)</span> into a z-value and using the standard normal table.</p>
+<p>First we need the calculation of the standard deviation since we need this in our z-value calculation:</p>
+<p><span class="math display">\[\begin{equation}
+\small{
+stdev=\sqrt{\frac{(1-p)p}{n}}
+=\sqrt{\frac{(1-0.4)0.4}{700}}
+=\sqrt{\frac{(0.6)0.4}{700}}
+=\sqrt{\frac{0.24}{700}}
+=0.0185164
+}
+\end{equation}\]</span></p>
+<p>Now lets find the z-value using the sample proportion <span class="math inline">\(\hat p= 0.4471429\)</span> the population proportion <span class="math inline">\(p=0.4\)</span> and the standard deviation <span class="math inline">\(stdev\)</span> we just found:</p>
+<p><span class="math display">\[\begin{equation}
+z=\frac{\hat p-p}{stdev}
+=\frac{0.4471429-0.4}{0.0185164}
+=\frac{0.0471429}{0.0185164}
+=2.55
+\end{equation}\]</span></p>
+<p>So here is the equivalent right tail area for of <span class="math inline">\(z=2.55\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This area is the same size as our original area so we just find this one using the standard normal distribution.</p>
+<p>We can find the right tail area for <span class="math inline">\(z=2.55\)</span> by finding the left tail area and then subtracting that from 1.0.</p>
+<p>So lets look up the left tail area first. Go to the row that has 2.5 and then to the column that contains .05 and we see this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table id="tab:unnamed-chunk-37" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;"></td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.00</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.01</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.02</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.03</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.04</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.05</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.06</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.07</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.08</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">2.4</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9918</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9920</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9922</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9925</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9927</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9929</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9931</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9932</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9934</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9936</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">2.5</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9938</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9940</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9941</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9943</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.9945</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(217, 217, 217); font-weight: bold; font-size: 11pt;">.9946</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9948</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9949</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9951</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9952</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">2.6</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9953</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9955</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9956</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9957</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9959</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9960</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9961</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9962</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9963</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.9964</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>So that means the left tail area we need in this situation is:</p>
+<p><span class="math display">\[\begin{equation}
+\text{left tail area} =0.9946
+\end{equation}\]</span></p>
+<p>This means that the right tail that we want to find is going to be this left tail subtracted from 1.0.</p>
+<p><span class="math display">\[\begin{equation}
+P = \text{right tail area} = 1.0 - 0.9946 = 0.0054
+\end{equation}\]</span></p>
+<p>So based on this our conclusion is that this is <strong>strong evidence against the null hypothesis</strong>.</p>
+<p>This evidence supports your claim that it is more than <span class="math inline">\(40\%\)</span>.</p>
+<p><span class="math display">\[
+\tag*{$\blacksquare$}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Here is one about testing promotion effectiveness:</p>
+<div id="exm-promotion-effectiveness" class="theorem example">
+<p><span class="theorem-title"><strong>Example 20.6 (Promotion Effectiveness) </strong></span>&nbsp;</p>
+<div class="cell">
+<div class="cell-output-display">
+<p>Suppose a store manager thinks that <span class="math inline">\(25\%\)</span> of its customers would upgrade to a more expensive item during a promotion. You work there as well and find the store manager's claim too high. To find out, you sample <span class="math inline">\(200\)</span> customers and find out <span class="math inline">\(38\)</span> of them would upgrade. Does the evidence support the store manager's claim?</p>
+<p><strong><em>Solution:</em></strong></p>
+<p>The claim about the population proportion involves <span class="math inline">\(0.25\)</span>.</p>
+<p>Here are the null and the alternative hypotheses:</p>
+<p><span class="math display">\[\begin{align}
+H_0:p &amp;= 0.25 \\
+H_a:p &amp;&lt; 0.25
+\end{align}\]</span></p>
+<ul>
+<li>The null hypothesis says <strong>The population proportion is <span class="math inline">\(0.25\)</span></strong></li>
+<li>The alternative hypothesis says <strong>The population proportion is less than <span class="math inline">\(0.25\)</span></strong></li>
+</ul>
+<p>Before we start we check the conditions of the Central Limit Theorem to make sure we can use a normal distribution here:</p>
+<p><span class="math inline">\(np=(200)(0.25)= 50\)</span> and <span class="math inline">\(n(1-p)=(200)(0.75)= 150\)</span></p>
+<p>Since these are both at least <span class="math inline">\(5\)</span> we are in good shape.</p>
+<p>Now if the null hypothesis is true, the Central Limit Theorem says the sampling distribution of sample proportions would look like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next we look at our test statistic, which is just our sample proportion:</p>
+<p><span class="math display">\[\begin{equation}
+\hat p = \frac{count}{n} = \frac{38}{200} = 0.19
+\end{equation}\]</span></p>
+<p>So we want to know how likely it is to get a sample proportion of 0.19 in this situation.</p>
+<p>In fact the <strong>P-value is just this left tail area</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We want the shaded <strong><em>left tail area</em></strong> that is to the left of <span class="math inline">\(\hat p = 0.19\)</span>:</p>
+<p>We will find this area by changing the sample proportion <span class="math inline">\(\hat p\)</span> into a z-value and using the standard normal table.</p>
+<p>First we need the calculation of the standard deviation since we need this in our z-value calculation:</p>
+<p><span class="math display">\[\begin{equation}
+\small{
+stdev=\sqrt{\frac{(1-p)p}{n}}
+=\sqrt{\frac{(1-0.25)0.25}{200}}
+=\sqrt{\frac{(0.75)0.25}{200}}
+=\sqrt{\frac{0.1875}{200}}
+=0.0306186
+}
+\end{equation}\]</span></p>
+<p>Now lets find the z-value using the sample proportion <span class="math inline">\(\hat p= 0.19\)</span>, the population proportion <span class="math inline">\(p=0.25\)</span> and the standard deviation <span class="math inline">\(stdev\)</span> we just found:</p>
+<p><span class="math display">\[\begin{equation}
+z=\frac{\hat p-p}{stdev}
+=\frac{0.19-0.25}{0.0306186}
+=\frac{-0.06}{0.0306186}
+=-1.96
+\end{equation}\]</span></p>
+<p>So here is the equivalent left tail area for of <span class="math inline">\(z=-1.96\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesis-testing-proportions_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This area is the same size as our original area so we just find this one using the standard normal distribution.</p>
+<p>We can look up the area in the standard normal z-table using <span class="math inline">\(z=-1.96\)</span></p>
+<p>We go to the row that has -1.9 and then to the column that contains .06 and we see this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table id="tab:unnamed-chunk-49" class="huxtable table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;"></td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.00</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.01</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.02</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.03</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.04</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.05</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.06</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.07</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.08</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">-2.0</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0228</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0222</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0217</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0212</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0207</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0202</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0197</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0192</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0188</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0183</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">-1.9</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0287</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0281</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0274</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0268</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0262</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(204, 204, 204); font-weight: normal; font-size: 11pt;">.0256</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; background-color: rgb(217, 217, 217); font-weight: bold; font-size: 11pt;">.0250</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0244</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0239</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0233</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 11pt;">-1.8</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0359</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0351</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0344</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0336</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0329</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0322</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0314</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0307</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0301</td>
+<td style="text-align: center; vertical-align: top; white-space: normal; border-style: solid solid solid solid; border-width: 0.5pt 0.5pt 0.5pt 0.5pt; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 11pt;">.0294</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>So that means the <strong>P-value</strong> we need in this situation is:</p>
+<p><span class="math display">\[\begin{equation}
+P = \text{left tail area} =0.025
+\end{equation}\]</span></p>
+<p>So based on this our conclusion is that this is <strong>moderate evidence against the null hypothesis</strong>.</p>
+<p>So this <strong>does not</strong> support the claim of the store manager. It looks like you were correct.</p>
+<p><span class="math display">\[
+\tag*{$\blacksquare$}
+\]</span></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./confidence-intervals-prop.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Confidence Intervals For Proportions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./sample-means-distribution.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Sampling Distribution of Sample Means</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

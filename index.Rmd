@@ -1,13 +1,5 @@
-# Introduction {#intro}
+::: {.content-hidden}
+# Intro Statistics {.unnumbered}
+:::
 
-### To Students {-} 
-
-This OER book is intended to help students in introductory statistics courses. The intended audience is non-science majors. We do not include formal proofs but instead focus on step-by-step examples and try to explain statistical concepts in everyday terms.
-
-### To Instructors {-} 
-
-The techniques used in this book are similar to *Mathplosion* [@mathplosion] but updated to use *Bookdown* [@R-quarto].
-
-Quarto is based on the RMarkdown format, see *The R Markdown and knitr Book* [@xie2015]
-
-![Creative Commons License](assets/80x15.png) The work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+![](assets/222bookcover1-1.png)

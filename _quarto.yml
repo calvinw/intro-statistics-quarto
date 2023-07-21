@@ -2,11 +2,9 @@ project:
   type: book
 
 book:
-  title: "intro-statistics"
-  author: "Calvin Williamson"
-  date: "7/16/2023"
   chapters:
     - index.Rmd
+    - intro.Rmd
     - what-is-statistics.Rmd
     - descriptive-and-inferential.Rmd
     - population-and-sample.Rmd
@@ -34,10 +32,11 @@ book:
     - simple-regression-significance.Rmd
     - regression-toolpak.Rmd
     - rsquared.Rmd
-    - appendix.Rmd
+    - references.qmd
+
+  appendices:
     - z-table.Rmd
     - lines.Rmd
-    - references.qmd
 
 bibliography: references.bib
 

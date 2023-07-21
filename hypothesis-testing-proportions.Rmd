@@ -57,7 +57,7 @@ claim makes sense or not.
 
 ## Steps for Hypothesis Testing
 
-Note: We use $p_{0}$ as the notation for the proposed population proportion. You should think of this as an actual number like $.32$ or $.75$. It is the **claimed** population proportion.  
+Note: We use $p_{0}$ as the notation for the proposed population proportion. You should think of this as an actual number like $.32$ or $.75$. It is the **claimed** population proportion.
 
 ### 1) Write down the claimed null hypothesis {-}
 
@@ -94,7 +94,7 @@ show about the population proportion:
 ### 3) Take a (random) sample from the population and compute the sample proportion {-}
 
 $$
-\widehat{p} = \frac{count}{\text{sample size}} = \frac{count}{n} 
+\widehat{p} = \frac{count}{\text{sample size}} = \frac{count}{n}
 $$
 
 This is called the **test statistic**
@@ -110,9 +110,9 @@ $\widehat{p}$ is the sample proportion you got in the previous step.
 
 ### 5) Find the the P-value {-}
 
-The **P-value** is what you use to conclude your test. 
+The **P-value** is what you use to conclude your test.
 
-Its value represents the chance that you get your sample proportion or something more extreme given that the null hypothesis is true.    
+Its value represents the chance that you get your sample proportion or something more extreme given that the null hypothesis is true.
 
 In more concrete terms, it is going to be an area (left tail, right tail or both) that comes from your sample proportion.
 
@@ -145,51 +145,50 @@ extreme.
 ## Conclusion of Hypothesis Test
 ```{asis example=TRUE, title="Conclusion of Hypothesis Test", echo=TRUE}
 
-Suppose you are doing a hypothesis test and you find out that your P-value is $p=.047$.  
+Suppose you are doing a hypothesis test and you find out that your P-value is $p=.047$.
 
 Since
 
-$$ 
-.01 < .047 < .05 
-$$ 
+$$
+.01 < .047 < .05
+$$
 
-This means that your conclusion is **moderate** evidence against the null $H_0$. 
+This means that your conclusion is **moderate** evidence against the null $H_0$.
 
 ```
 :::
 
-### 6b) Find the conclusion from level of significance ($\alpha$) {-}
-
-Sometimes the conclusion part of a hypothesis test is done in a different way than the above step 6a. 
+### 6b) Find the conclusion from level of significance {-}
+Sometimes the conclusion part of a hypothesis test is done in a different way than the above step 6a.
 
 If you are given a **level of significance** (called $\alpha$) you decide your conclusion in a slightly different way:
 
 - If $P < \alpha$, then you **Reject the null hypothesis**
 - If $P \geq \alpha$, then you **Fail to reject the null hypothesis**
 
-Some people use the term **accept the null hypothesis** instead of **fail to reject the null hypothesis**. We take these to be equivalent.  
+Some people use the term **accept the null hypothesis** instead of **fail to reject the null hypothesis**. We take these to be equivalent.
 
 Using the level of signifcance like this means you state your conclusion differently than in section 6a above. The $\alpha$ is more like a **cut-off** for rejecting the null hypothesis in this case.
 
 And in the case you either **reject the null** or **fail to reject the null**, and there is no othersituation (no "moderate evidence" or "very strong evidence"... just reject or not plain and simple)
 
 :::{#exm-level-of-significance}
-## Level of Significance 
+## Level of Significance
 ```{asis echo=TRUE}
 
-Suppose you are doing a hypothesis test at the 5% level of significance,(which is $\alpha=.05$) and you find out that your P-value is $P=.023$.  
+Suppose you are doing a hypothesis test at the 5% level of significance,(which is $\alpha=.05$) and you find out that your P-value is $P=.023$.
 
 Since
 
-$$ 
-.023 < .05 
-$$ 
+$$
+.023 < .05
+$$
 
-This means that $P < \alpha$ and so you **reject the null hypothesis**. 
+This means that $P < \alpha$ and so you **reject the null hypothesis**.
 ```
 :::
 
-So in this case you decide your conclusion by comparing to the given $\alpha$ value and not by the method in section 6a. If your P-value is smaller than $\alpha$, you **reject the null hypothesis**, otherwise you **fail to reject the null hypothesis**. 
+So in this case you decide your conclusion by comparing to the given $\alpha$ value and not by the method in section 6a. If your P-value is smaller than $\alpha$, you **reject the null hypothesis**, otherwise you **fail to reject the null hypothesis**.
 
 ## Other terminology
 
@@ -197,33 +196,33 @@ Sometimes you will hear people say **accept the null hypothesis** when $p \geq \
 
 Finally keep this is mind as well:
 
-- **reject the null hypothesis** means you believe the alternative  
-- **failure to reject the null hypothesis** means you believe the null could be true  
+- **reject the null hypothesis** means you believe the alternative
+- **failure to reject the null hypothesis** means you believe the null could be true
 
 And one more that is like a court case verdict:
 
-- **reject the null hypothesis** is in favor of $H_a$  
-- **failure to reject the null hypothesis** is in favor of $H_0$  
+- **reject the null hypothesis** is in favor of $H_a$
+- **failure to reject the null hypothesis** is in favor of $H_0$
 
 ## Type I and Type II Error
 
-Let us take a minute to mention two types of errors that take place with hypothesis testing called **Type I Error** and **Type II Error.** 
+Let us take a minute to mention two types of errors that take place with hypothesis testing called **Type I Error** and **Type II Error.**
 
-Here are the complete options when you’re dealing with these hypothesis tests. Recall that $H_0$ stands for the null hypothesis. Also we will use the phrase \"accept $H_0$\" instead of \"fail to reject $H_0$\". These mean the same thing. 
+Here are the complete options when you’re dealing with these hypothesis tests. Recall that $H_0$ stands for the null hypothesis. Also we will use the phrase \"accept $H_0$\" instead of \"fail to reject $H_0$\". These mean the same thing.
 
 - If $H_0$ is actually true and in our testing we accept $H_0$  then there is no mistake
-- If $H_0$ is actually false and in our testing we reject $H_0$  then there is no mistake 
+- If $H_0$ is actually false and in our testing we reject $H_0$  then there is no mistake
 - If $H_0$ is actually true and in our testing we reject $H_0$ then that is a mistake and this is called a **Type I Error**
 - If $H_0$ is actually false and in our testing we accept $H_0$ then that is a mistake and this is called a **Type II Error**.
 
-Most people give a guilty vs. innocent example so we will too. 
+Most people give a guilty vs. innocent example so we will too.
 
-- If an innocent person is not convicted then there is no mistake 
-- If a guilty person is convicted then there is no mistake 
-- If an innocent person is convicted then that is a mistake and is called a **Type I Error** 
+- If an innocent person is not convicted then there is no mistake
+- If a guilty person is convicted then there is no mistake
+- If an innocent person is convicted then that is a mistake and is called a **Type I Error**
 - If a guilty person is not convicted then that is a mistake and is called a **Type II Error**
 
-These errors can impact our daily lives in a huge way, like in the example mentioned above.  More everyday examples include construction projects, our safety, and more. 
+These errors can impact our daily lives in a huge way, like in the example mentioned above.  More everyday examples include construction projects, our safety, and more.
 
 ## Examples of Hypothesis Testing
 
@@ -233,8 +232,8 @@ The first example is a left tail test:
 ## Left Tail Hypothesis Test Proportions
 ```{r}
 knit_example(list(count=190,n=250,p=0.79),
-	     'statplosion-problems/question/HypothesisTestPropLeftTailQuestion.Rmd', 
-	     'statplosion-problems/solution/HypothesisTestPropLeftTailSolution.Rmd') 
+	     'statplosion-problems/question/HypothesisTestPropLeftTailQuestion.Rmd',
+	     'statplosion-problems/solution/HypothesisTestPropLeftTailSolution.Rmd')
 ```
 :::
 
@@ -244,8 +243,8 @@ Now let's see an example of a right tail test:
 ## Right Tail Hypothesis Test-Proportions
 ```{r}
 knit_example(list(count=101,n=250,p=0.34),
-	     'statplosion-problems/question/HypothesisTestPropRightTailQuestion.Rmd', 
-	     'statplosion-problems/solution/HypothesisTestPropRightTailSolution.Rmd') 
+	     'statplosion-problems/question/HypothesisTestPropRightTailQuestion.Rmd',
+	     'statplosion-problems/solution/HypothesisTestPropRightTailSolution.Rmd')
 ```
 :::
 
@@ -257,18 +256,18 @@ Here is an application about selling clothes online:
 ## Selling Clothes Online
 ```{r}
 knit_example(list(count=313,n=700,p=0.40),
-	     'book-problems/question/SellingClothesOnlineQuestion.Rmd', 
-	     'book-problems/solution/SellingClothesOnlineSolution.Rmd') 
+	     'book-problems/question/SellingClothesOnlineQuestion.Rmd',
+	     'book-problems/solution/SellingClothesOnlineSolution.Rmd')
 ```
 :::
 
-Here is one about testing promotion effectiveness: 
+Here is one about testing promotion effectiveness:
 
 :::{#exm-promotion-effectiveness}
-## Promotion Effectiveness 
+## Promotion Effectiveness
 ```{r}
 knit_example(list(count=38,n=200,p=0.25),
-	     'book-problems/question/PromotionEffectivenessQuestion.Rmd', 
-	     'book-problems/solution/PromotionEffectivenessSolution.Rmd') 
+	     'book-problems/question/PromotionEffectivenessQuestion.Rmd',
+	     'book-problems/solution/PromotionEffectivenessSolution.Rmd')
 ```
 :::

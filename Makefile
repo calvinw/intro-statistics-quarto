@@ -9,6 +9,10 @@ all: html
 clean :
 	rm -rf _book
 
+publish :
+	rm -rf docs/*
+	cp -rf _book/* docs
+
 render:
 	quarto render
 
@@ -17,3 +21,6 @@ preview:
 
 html:
 	quarto render --to html
+
+pdf:
+	quarto render --to pdf

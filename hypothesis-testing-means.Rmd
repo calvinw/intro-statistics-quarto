@@ -11,7 +11,7 @@ But suppose **someone claims that a population mean $\mu$ is some value** (like 
 
 What kinds of sample means would we expect to get from such a population?
 
-If you remember the [Central Limit Theorem for Means](#central-limit-theorem---means) says that under certain conditions the sampling distribution of sample means (the $\bar x$-distribution) would be normal with a mean of 110 and a standard deviation given by $\frac{\sigma}{\sqrt{n}}$. Here $\sigma$ is the population standard deviation and $n$ is the sample size.   
+If you remember the [Central Limit Theorem for Means](#central-limit-theorem---means) says that under certain conditions the sampling distribution of sample means (the $\bar x$-distribution) would be normal with a mean of 110 and a standard deviation given by $\frac{\sigma}{\sqrt{n}}$. Here $\sigma$ is the population standard deviation and $n$ is the sample size.
 
 So that means if we repeatedly take sample means $\bar x$ of a certain sample size $n$ usually we find that those sample means $\bar x$ are near $\mu$ and only occasionally would they be somewhat farther away.
 
@@ -22,7 +22,7 @@ This is called a **hypothesis test** of the (claimed) population mean. Roughly, 
 - If our **sample mean is too far away** we say it is **evidence against the claim**.
 - If our **sample mean is close to the center**, we say it is **no evidence against the claim**.
 
-We will specify what **too far away** means below in the steps of our test.  
+We will specify what **too far away** means below in the steps of our test.
 
 Basically if the sample mean is too far away from the (claimed) population mean, we believe that claim about the population mean may be bogus.
 
@@ -34,11 +34,11 @@ By looking at a sample, and examining how close the sample mean is to the (claim
 
 First we outline the hypothesis test for the situation where the population standard deviation $\sigma$ is not known. This is almost always the case. After all if we don't know $\mu$, then it is likely we will not know $\sigma$ either.
 
-In this case we must use a $t$-value and $t$-distribution for our calculations. 
+In this case we must use a $t$-value and $t$-distribution for our calculations.
 
 ## Steps for Hypothesis Testing - Means ($\sigma$ unknown)
 
-Note: We use $\mu_{0}$ as the notation for the proposed population mean. You should think of this as an actual number like $52$ or $312$. It is the **claimed** population mean. 
+Note: We use $\mu_{0}$ as the notation for the proposed population mean. You should think of this as an actual number like $52$ or $312$. It is the **claimed** population mean.
 
 
 ### 1) Write down the claimed null hypothesis {- #means-step-1}
@@ -75,13 +75,13 @@ Which of these you pick depends on what you (as the researcher) want to show abo
 
 sample mean:
 $$
-\bar x = \frac{\sum x}{n} 
+\bar x = \frac{\sum x}{n}
 $$
 
 sample standard deviation:
 
 $$
-s = \sqrt{\frac{\sum (x-\bar x)^2}{n-1}} 
+s = \sqrt{\frac{\sum (x-\bar x)^2}{n-1}}
 $$
 
 The $\bar x$ is called the **test statistic**
@@ -89,16 +89,16 @@ The $\bar x$ is called the **test statistic**
 ### 4) Compute the t-score for the test statistic {- #means-step-4}
 
 $$
-t = \frac{\bar x-\mu_{0}}{\frac{s}{\sqrt{n}}} 
+t = \frac{\bar x-\mu_{0}}{\frac{s}{\sqrt{n}}}
 $$
 
 Here you use the (proposed) population mean $\mu_{0}$ and the sample mean $\bar x$ and the sample standard deviation $s$ from the test statistic
 
 ### 5) Find the the P-value {- #means-step-5}
 
-The **P-value** is what you use to conclude your test. 
+The **P-value** is what you use to conclude your test.
 
-Its value represents the chance that you get your sample mean or something more extreme given that the null hypothesis is true.    
+Its value represents the chance that you get your sample mean or something more extreme given that the null hypothesis is true.
 
 In more concrete terms, it is going to be an area (left tail, right tail or both) that comes from your t-value and the t-distribution.
 
@@ -110,7 +110,7 @@ Here is how you compute it:
 
 To get these areas you just use the t-value from step \#4 above and compute them from that using tables or software.
 
-### 6a) Find the conclusion from the P-value {- #means-step-6a}
+### 6a) Find the conclusion from the P-value {-}
 
 To find your conclusion for a hypothesis test once you have your P-value you can use the following guide based on the size of the P-value:
 
@@ -127,29 +127,29 @@ That's because a small P-value represents a small area for a tail and
 that happens when the t-value (and hence the sample mean) is more
 extreme.
 
-### 6b) Find the conclusion from level of significance ($\alpha$) {- #means-step-6b}
+### 6b) Find the conclusion from level of significance {-}
 
-Sometimes the conclusion part of a hypothesis test is done in a different way than the above step 6a. 
+Sometimes the conclusion part of a hypothesis test is done in a different way than the above step 6a.
 
 If you are given a **level of significance** (called $\alpha$) you decide your conclusion in a slightly different way:
 
 - If $P < \alpha$, then you **Reject the null hypothesis**
 - If $P \geq \alpha$, then you **Fail to reject the null hypothesis**
 
-Some people use the term **accept the null hypothesis** instead of **fail to reject the null hypothesis**. We take these to be equivalent.  
+Some people use the term **accept the null hypothesis** instead of **fail to reject the null hypothesis**. We take these to be equivalent.
 
 Using the level of signifcance like this means you state your conclusion differently than in section 6a above. The $\alpha$ is more like a **cut-off** for rejecting the null hypothesis in this case.
 
 And in the case you either **reject the null** or **fail to reject the null**, and there is no other situation (no "moderate evidence" or "very strong evidence"... just reject or not plain and simple)
 
-So in this case you decide your conclusion by comparing to the given $\alpha$ value and not by the method in section 6a. If your P-value is smaller than $\alpha$, you **reject the null hypothesis**, otherwise you **fail to reject the null hypothesis**. 
+So in this case you decide your conclusion by comparing to the given $\alpha$ value and not by the method in section 6a. If your P-value is smaller than $\alpha$, you **reject the null hypothesis**, otherwise you **fail to reject the null hypothesis**.
 
 ## Steps for Hypothesis Testing - Means ($\sigma$ known)
 
-In this situation the test is exactly like above except that instead of using a t-value after you get your $\bar x$ test statistic, you can use a z-value and the standard normal distribution to perform your calculations. So in [step 4](#means-step-4) above you compute this:  
+In this situation the test is exactly like above except that instead of using a t-value after you get your $\bar x$ test statistic, you can use a z-value and the standard normal distribution to perform your calculations. So in [step 4](#means-step-4) above you compute this:
 
 $$
-z = \frac{\bar x-\mu}{\frac{\sigma}{\sqrt{n}}} 
+z = \frac{\bar x-\mu}{\frac{\sigma}{\sqrt{n}}}
 $$
 
 It should be noted that in the case where $n<30$ you must make assumptions as in the Central Limit Theorem that the distribution approximately normal.
@@ -163,19 +163,19 @@ The first example is a left tail test where $\sigma$ is known, so we use a z-tes
 ## Left Tail Hypothesis Test $\sigma$ known
 ```{r}
 knit_example(list(xbar=48,n=40,mu=50,sigma=5),
-	     'statplosion-problems/question/HypothesisTestMeansLeftTailZTestQuestion.Rmd', 
-	     'statplosion-problems/solution/HypothesisTestMeansLeftTailZTestSolution.Rmd') 
+	     'statplosion-problems/question/HypothesisTestMeansLeftTailZTestQuestion.Rmd',
+	     'statplosion-problems/solution/HypothesisTestMeansLeftTailZTestSolution.Rmd')
 ```
 :::
 
 The next example is a left tail test where $\sigma$ is not known, so we use a t-test (use a t-value) in our calculations:
 
 :::{#exm-mean-sales-for-handbags}
-## Mean Sales For Handbags 
+## Mean Sales For Handbags
 ```{r}
 knit_example(list(xbar=255000,n=100,mu=265000,s=57000),
-	     'book-problems/question/MeanSalesForHandbagsQuestion.Rmd', 
-	     'book-problems/solution/MeanSalesForHandbagsSolution.Rmd') 
+	     'book-problems/question/MeanSalesForHandbagsQuestion.Rmd',
+	     'book-problems/solution/MeanSalesForHandbagsSolution.Rmd')
 ```
 :::
 

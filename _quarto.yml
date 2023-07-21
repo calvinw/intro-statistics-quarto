@@ -20,6 +20,7 @@ book:
     - standard-normal-curve.Rmd
     - standard-normal-table.Rmd
     - standard-normal-areas.Rmd
+    - standard-normal-spreadsheet.Rmd
     - backwards-problems.Rmd
     - sample-proportions-distribution.Rmd
     - confidence-intervals-prop.Rmd

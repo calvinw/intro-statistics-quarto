@@ -1,0 +1,65 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+# Standard Normal Areas And Spreadsheets {#standard-normal-spreadsheet}
+
+This section shows how to use a spreadsheet to find left tail areas. Usually you will use something like Excel or Google Spreadsheets. They both work the same for all the calculations we show. You can use either one.
+
+This is an alternative way to find the same areas as when we used a standard normal table in the last section.
+
+
+## Left Tail Areas With Spreadsheets {#left-tail-areas-with-spreadsheets}
+
+So here are a two examples of finding **left tail area** using a spreadsheet:
+
+:::{#exm-Left-tail-area-for-z-equals-minus-1.02-using-spreadsheet}
+## Left tail area for $z=-1.02$ using spreadsheet
+```{r}
+knit_example(list(z=-1.02),
+             'statplosion-problems/question/StdNormalLeftTailSpreadsheetQuestion.Rmd',
+             'statplosion-problems/solution/StdNormalLeftTailSpreadsheetSolution.Rmd')
+```
+:::
+
+:::{#exm-Left-tail-area-for-z-equals-1.79-using-spreadsheet}
+## Left tail area for $z=1.79$ using spreadsheet
+```{r}
+knit_example(list(z=1.79),
+             'statplosion-problems/question/StdNormalLeftTailSpreadsheetQuestion.Rmd',
+             'statplosion-problems/solution/StdNormalLeftTailSpreadsheetSolution.Rmd')
+```
+
+## Right Tail Areas With Spreadsheets {#right-tail-areas-with-spreadsheets}
+
+And here are two examples of finding the **right tail area** using a spreadsheet:
+
+:::{#exm-Right-tail-area-for-z-equals-minus-1.48-using-spreadsheet}
+## Right tail area for $z=-1.48$ using spreadsheet
+```{r}
+knit_example(list(z=-1.48),
+             'statplosion-problems/question/StdNormalRightTailSpreadsheetQuestion.Rmd',
+             'statplosion-problems/solution/StdNormalRightTailSpreadsheetSolution.Rmd')
+```
+:::
+
+:::{#exm-Right-tail-area-for-z-equals-0.31-using-spreadsheet}
+## Right tail area for $z=0.31$ using spreadsheet
+```{r}
+knit_example(list(z=0.31),
+             'statplosion-problems/question/StdNormalRightTailSpreadsheetQuestion.Rmd',
+             'statplosion-problems/solution/StdNormalRightTailSpreadsheetSolution.Rmd')
+```
+:::
+
+## Area Between With Spreadsheets {#area-between-with-spreadsheets}
+
+And here is an example of finding the **area between** using a spreadsheet:
+
+:::{#exm-Area-between-z-equals-minus-0.54-and-1.24-using-spreadsheet}
+## Area between $z1=-0.54$ and $z2=1.24$ using spreadsheet
+```{r example=TRUE, title="Area between $z1=-0.54$ and $z2=1.24$ using spreadsheet", results='asis'}
+knit_example(list(z1=-0.54, z2=1.24),
+             'statplosion-problems/question/StdNormalAreaBetweenSpreadsheetQuestion.Rmd',
+             'statplosion-problems/solution/StdNormalAreaBetweenSpreadsheetSolution.Rmd')
+```
+:::

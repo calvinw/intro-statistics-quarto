@@ -1,0 +1,98 @@
+```{r setup, echo=FALSE}
+source("intro-statistics-quarto.R")
+```
+# My Chapter {#sec-my-chapter}
+
+Let's take at a look at an important calculation: Finding $z$-values
+
+| fruit  | price  |
+|--------|--------|
+| apple  | 2.05   |
+| pear   | 1.37   |
+| orange | 3.09   |
+
+: Fruit prices {#tbl-fruit-prices .striped .hover}
+
+You can do the link to the above this: @tbl-fruit-prices. 
+Or you can do it like this: [Fruit Prices](test.Rmd#tbl-fruit-prices)
+
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: My Caption {.striped}
+
+If you do not give it a label you cannot reference it with a link. And it does not get the table numbering.
+
+::: {style="width:33%;margin:auto"}
+```{r tbl-cars}
+#| tbl-cap: These are the cars! 
+
+kable(head(cars))
+```
+:::
+
+You can use this calculation to figure out how far away data values are from the mean:
+
+
+Here is another example:
+
+::: {style="width:33%;margin:auto"}
+```{asis tbl-fruits-and-prices, echo=T}
+#| tbl-cap: These are the fruits and prices 
+
+| fruit  | price  |
+|--------|--------|
+| apple  | 2.05   |
+| pear   | 1.37   |
+| orange | 3.09   |
+```
+:::
+
+| |what| symbol  | when to use  |
+|---|---|---|----------|
+| population mean | parameter | $\mu$  | for mean of entire population  |
+| sample mean  | statistic | $\bar x$   | for mean of sample |
+
+Here is the formula in words:
+
+$$
+z =\frac{\text{data} -\text{mean}}{\text{std dev}}
+$$ {#eq-z-value-formula-in-words}
+
+
+## Population Z Value
+
+First lets look at the population version of it. Suppose you know the mean $\mu$ and the standard deviation $\sigma$ for some population. You can find the $z$-value for any data value $x$ like this:
+
+$$
+z =\frac{x -\mu}{\sigma}
+$$ {#eq-z-value-formula}
+
+Lets see some examples of this in action:
+adfd
+
+:::{#exm-Find-the-z-value}
+## Find the z-value
+```{r, fig.label="wee", fig.cap="weee"}
+knit_example(list(mu=52, x=54, sigma=8),
+	     "statplosion-problems/question/ZValueQuestion.Rmd",
+	     "statplosion-problems/solution/ZValueSolution.Rmd")
+```
+:::
+
+asdfaf
+
+Here is an example where we find the z-value of an exam score of $65$:
+
+:::{#exm-Left-tail-area-for-z-equals-minus-1.02-using-spreadsheet}
+## Left tail area for $z=-1.02$ using spreadsheet
+```{r}
+knit_example(list(z=-1.02),
+             'statplosion-problems/question/StdNormalLeftTailSpreadsheetQuestion.Rmd',
+             'statplosion-problems/solution/StdNormalLeftTailSpreadsheetSolution.Rmd')
+```
+:::

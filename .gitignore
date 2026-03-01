@@ -53,3 +53,10 @@ statplosion-problems
 
 /.quarto/
 
+
+**/*.quarto_ipynb
+/*.md
+/figures/
+/site_libs/
+/statplosion/
+/*_files/

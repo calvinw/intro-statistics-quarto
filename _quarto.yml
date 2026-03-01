@@ -44,5 +44,6 @@ bibliography: references.bib
 format:
   html:
     theme: journal
+    keep-md: true
   pdf:
     documentclass: scrreprt
